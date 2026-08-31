@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marina Kapitanov</title>
 
-  <!-- The original site uses a rounded geometric sans + a high-contrast serif display face. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --red: #b72932;
-      --ink: #050505;
-      --blue: #173866;
-      --white: #fff;
-      --rule: rgba(183, 41, 50, 0.55);
-      --max: 752px;
+      --base: #f4f6f3;
+      --red: #b72831;
+      --ink: #000;
+      --content: 760px;
+      --wide: 1200px;
+      --pad: 2rem;
+      --gap: 2rem;
     }
 
     * { box-sizing: border-box; }
@@ -26,744 +26,647 @@
 
     body {
       margin: 0;
-      background: #e8e8eb;
-      color: var(--ink);
-      font-family: "Quicksand", Arial, sans-serif;
-      font-weight: 400;
-      line-height: 1.23;
+      background: var(--base);
+      color: var(--red);
+      font-family: "Urbanist", sans-serif;
+      font-size: clamp(0.929rem, 0.929rem + ((1vw - 0.2rem) * 0.856), 1.4rem);
+      line-height: 1.2;
     }
 
+    img { max-width: 100%; height: auto; }
+
     a {
-      color: inherit;
+      color: var(--red);
       text-decoration: none;
     }
 
-    a:hover {
-      opacity: 0.8;
-    }
+    a:hover { text-decoration: underline; }
 
-    .page {
-      width: min(var(--max), calc(100vw - 48px));
-      margin: 0 auto;
-      padding: 210px 0 96px;
-    }
+    p, h1, h2, h3, figure { margin: 0; }
 
-    /* ---------- red hero header ---------- */
-
+    /* =========================
+       HERO — modeled on the supplied WordPress source
+       ========================= */
     .hero {
-      margin: 8px 5px 0;
-      min-height: 487px;
-      background: var(--red);
-      border-radius: 5px 5px 0 0;
-      overflow: hidden;
+      width: 100%;
+      min-height: 830px;
+      margin: 0;
+      padding: 4rem 0;
+      background: linear-gradient(to bottom, var(--red) 82%, var(--base) 82%);
+      color: var(--base);
     }
 
-    .hero-inner {
-      min-height: 487px;
+    .hero-shell {
+      width: min(var(--wide), calc(100% - (var(--pad) * 2)));
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .hero-columns {
       display: grid;
-      grid-template-columns: 51.5% 48.5%;
+      grid-template-columns: 66.66% 33.34%;
+      gap: 0;
+      align-items: start;
     }
 
-    .hero-copy {
-      padding: 30px 22px 35px 30px;
-      color: var(--white);
+    .hero-left {
+      padding-right: 1.5rem;
     }
 
-    /* ---------- header image ---------- */
+    .top-row {
+      min-height: 94px;
+      padding: 0.67rem 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
 
-    .hero-mark {
-      display: block;
-      width: 80px;
-      height: 87px;
+    .identity {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--base);
+    }
+
+    .identity-logo {
+      width: 52px;
+      height: 57px;
       object-fit: contain;
-      margin-bottom: 14px;
+      display: block;
+      flex: 0 0 auto;
+    }
+
+    .site-title {
+      font-size: clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.455), 1.25rem);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--base);
+    }
+
+    .site-title a { color: inherit; }
+
+    .top-social {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-top: 0.1rem;
+    }
+
+    .social-link {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--base);
+    }
+
+    .social-link svg {
+      width: 24px;
+      height: 24px;
+      display: block;
+      fill: currentColor;
     }
 
     .hero-title {
-      margin: 0 0 78px;
-      font-family: "Bodoni Moda", "Bodoni 72", Didot, "GFS Didot", serif;
-      font-size: clamp(62px, 6.1vw, 96px);
+      margin-top: 2.75rem;
+      margin-bottom: 2rem;
+      color: var(--base);
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(3.8rem, 3.8rem + ((1vw - 0.2rem) * 7.636), 8rem);
+      font-style: normal;
       font-weight: 400;
-      letter-spacing: -4px;
-      line-height: 0.98;
-      white-space: nowrap;
+      letter-spacing: -0.2rem;
+      line-height: 1;
+    }
+
+    .hero-title a { color: inherit; }
+
+    .hero-bottom {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      padding-right: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
 
     .intro {
-      margin: 0 0 17px;
-      max-width: 780px;
-      font-size: 21px;
-      line-height: 1.15;
+      color: var(--base);
+      font-size: inherit;
+      line-height: 1.2;
     }
 
-    .nav {
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      justify-content: flex-end;
+      color: var(--ink);
+    }
+
+    .hero-nav {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 0 10px;
-      margin-left: 9px;
-      font-size: 20px;
-      font-weight: 700;
+      justify-content: flex-end;
+      gap: 0.5rem;
       color: var(--ink);
+      font-weight: 600;
+      line-height: 1;
     }
 
-    .nav a {
-      color: var(--ink);
-    }
+    .hero-nav a,
+    .hero-nav .slash { color: var(--ink); }
 
-    .nav a:hover {
-      opacity: 0.72;
-    }
-
-    .nav .slash {
-      color: var(--white);
-      font-weight: 500;
-    }
-
-    .hero-photo-wrap {
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-start;
-      padding: 0 0 0 0;
+    .hero-photo-col {
+      padding-top: 4rem;
     }
 
     .hero-photo {
       display: block;
-      width: 352px;
-      height: 365px;
-      object-fit: cover;
-      object-position: center top;
-      border: 8px solid #fff;
-      background: #fff;
-    }
-
-    .mail-icon {
-      width: 24px;
-      height: 18px;
-      display: inline-block;
-      position: relative;
-      border: 2px solid var(--white);
-      border-radius: 2px;
-    }
-
-    .mail-icon::before,
-    .mail-icon::after {
-      content: "";
-      position: absolute;
-      top: 3px;
-      width: 13px;
-      height: 2px;
-      background: var(--white);
-    }
-
-    .mail-icon::before {
-      left: 0;
-      transform: rotate(31deg);
-      transform-origin: left center;
-    }
-
-    .mail-icon::after {
-      right: 0;
-      transform: rotate(-31deg);
-      transform-origin: right center;
-    }
-
-    /* ---------- profile image ---------- */
-
-    .profile-wrap {
-      margin: 104px 0 132px 10px;
-    }
-
-    .profile {
-      width: 392px;
-      height: auto;
-      display: block;
-    }
-
-    /* ---------- red callouts ---------- */
-
-    .callouts {
+      width: 358px;
+      max-width: 100%;
+      border: 8px solid var(--base);
       margin: 0;
-      color: var(--red);
+    }
+
+    /* =========================
+       HIGHLIGHTS ROW
+       ========================= */
+    .content-shell {
+      width: min(var(--wide), calc(100% - (var(--pad) * 2)));
+      margin: 0 auto;
+    }
+
+    .highlights {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+
+    .highlight-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      border-bottom: 2px solid var(--red);
+    }
+
+    .highlight {
+      min-height: 180px;
+      display: flex;
       align-items: stretch;
+      border-right: 1px solid var(--red);
+      padding: 2rem 1rem 1.5rem;
     }
 
-    .callout {
-      position: relative;
-      min-height: 195px;
+    .highlight:first-child { border-left: 0; }
+    .highlight:nth-child(2) { border-left: 1px solid var(--red); }
+    .highlight:last-child { border-right: 1px solid var(--red); }
+
+    .highlight h2 {
+      width: 100%;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--red);
+      font-size: clamp(1.352rem, 1.352rem + ((1vw - 0.2rem) * 1.542), 2.2rem);
+      font-weight: 600;
+      line-height: 0.9;
+    }
+
+    /* =========================
+       MAIN BODY — 2/3 text, 1/3 posters
+       ========================= */
+    .body-grid {
       display: grid;
-      place-items: center;
-      padding: 30px 28px;
-      text-align: center;
-      font-size: 31px;
-      font-weight: 600;
-      line-height: 0.95;
-      border-right: 1px solid var(--rule);
+      grid-template-columns: 66.66% 33.34%;
+      border-bottom: 2px solid var(--red);
     }
 
-    .callout:first-child {
-      border-left: 0;
+    .research-column {
+      padding: 0 2rem 3rem 0;
+      border-right: 1px solid var(--red);
+      min-width: 0;
     }
 
-    .callout:nth-child(2) {
-      border-left: 1px solid var(--rule);
-      border-right: 1px solid var(--rule);
+    .posters-column {
+      padding: 2rem 1rem 1.5rem 1rem;
+      min-width: 0;
+      border-left: 1px solid var(--red);
     }
 
-    .callout:nth-child(3) {
-      border-left: 1px solid var(--rule);
-      border-right: 0;
-    }
+    .body-spacer { height: 28px; }
 
-    /* ---------- research ---------- */
-
-    .section-box {
-      border-left: 1px solid var(--rule);
-      border-right: 1px solid var(--rule);
+    .research-copy {
+      font-size: clamp(0.984rem, 0.984rem + ((1vw - 0.2rem) * 0.938), 1.5rem);
+      line-height: 1.2;
       color: var(--red);
     }
 
-    .section-title {
-      margin: 0;
-      padding: 42px 24px 34px;
-      border-bottom: 1px solid var(--rule);
-      font-size: 30px;
-      font-weight: 600;
-      line-height: 1.03;
-      text-align: center;
+    .research-copy p { margin-bottom: 2rem; }
+    .research-copy p:last-child { margin-bottom: 0; }
+
+    .separator {
+      margin: 1.75rem 0 0;
+      border: 0;
+      border-top: 1px solid var(--ink);
     }
 
-    .research-text {
-      padding: 35px 0 28px;
-      font-size: 21px;
-      line-height: 1.24;
-    }
-
-    .research-text p {
-      margin: 0 0 31px;
-    }
-
-    .research-text p:last-child {
-      margin-bottom: 0;
-    }
-
-    .featured-heading {
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      padding: 32px 0 24px;
-      margin-top: 3px;
-      font-size: 31px;
-      font-weight: 600;
-      line-height: 1;
-    }
-
-    /* ---------- featured image/text ---------- */
-
-    .featured {
-      padding-top: 42px;
+    .recent-heading {
+      margin-top: 2rem;
       color: var(--red);
+      font-size: clamp(1.352rem, 1.352rem + ((1vw - 0.2rem) * 1.542), 2.2rem);
+      font-weight: 600;
+      line-height: 0.9;
+    }
+
+    .recent-image-wrap {
+      margin-top: 0.65rem;
     }
 
     .dive-photo {
       display: block;
-      width: calc(100% - 40px);
-      margin-left: 20px;
-      height: auto;
+      width: 100%;
+      max-width: 619px;
+      margin: 0 auto;
+      object-fit: cover;
+      aspect-ratio: 1.5;
     }
 
     .featured-copy {
-      padding: 31px 0 0;
-      font-size: 21px;
-      line-height: 1.17;
+      margin-top: 1.8rem;
+      color: var(--red);
     }
 
     .featured-copy p {
-      margin: 0 0 29px;
+      margin-bottom: 1.8rem;
     }
 
-    .featured-copy strong {
-      font-weight: 700;
-    }
+    .featured-copy p:last-child { margin-bottom: 0; }
 
-    .featured-copy a {
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
+    .featured-copy a { color: var(--red); }
 
-    .posters-heading {
-      margin: 31px 0 0 20px;
-      font-size: 32px;
-      font-weight: 600;
-      line-height: 1;
-    }
-
-    /* ---------- posters ---------- */
-
-    .poster-grid {
-      padding: 62px 0 0;
+    .posters-title {
       color: var(--red);
+      font-size: clamp(1.352rem, 1.352rem + ((1vw - 0.2rem) * 1.542), 2.2rem);
+      font-weight: 600;
+      line-height: 0.9;
+      margin-bottom: 1.5rem;
     }
 
-    .poster-item {
-      border-top: 1px solid var(--rule);
-      padding: 0 0 37px;
+    .poster-card {
+      margin-bottom: 1.5rem;
     }
 
-    .poster-item img {
+    .poster-card img {
+      display: block;
       width: 100%;
       height: auto;
-      display: block;
     }
 
-    .poster-item:first-child img,
-    .poster-item:nth-child(2) img {
-      width: 92%;
-      margin-left: 5.4%;
+    .poster-card:last-child img {
+      width: 329px;
+      max-width: 100%;
     }
 
-    .poster-item:last-child {
-      width: 72%;
-      margin-left: 5.4%;
-      margin-top: -8px;
-      padding-bottom: 0;
+    .poster-caption {
+      margin-top: 0.55rem;
+      color: var(--red);
+      font-size: 0.95em;
+      line-height: 1.15;
     }
 
-    .caption {
-      margin-top: 9px;
-      font-size: 17px;
-      line-height: 1.07;
-    }
-
-    /* ---------- footer ---------- */
-
+    /* =========================
+       FOOTER
+       ========================= */
     .footer {
-      margin-top: 90px;
-      padding: 62px 0 30px;
+      padding: 2.5rem var(--pad) 3rem;
       text-align: center;
       color: var(--red);
-      font-size: 17px;
     }
 
-    .socials {
-      margin-top: 24px;
+    .footer-socials {
+      margin-top: 1rem;
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 8px;
+    }
+
+    .footer-socials a {
+      color: var(--red);
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
       align-items: center;
+      justify-content: center;
     }
 
-    .social-icon {
-      width: 17px;
-      height: 17px;
+    .footer-socials svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
     }
 
-    .social-icon.mail {
-      width: 18px;
-    }
-
-    /* ---------- cookie banner ---------- */
-
+    /* =========================
+       COOKIE NOTICE — lightweight replica
+       ========================= */
     .cookie {
       position: fixed;
-      z-index: 20;
+      z-index: 100;
       left: 50%;
-      bottom: 22px;
+      bottom: 0.75rem;
       transform: translateX(-50%);
-      width: min(780px, calc(100vw - 48px));
-      background: rgba(255,255,255,0.98);
-      border: 1px solid #d6d6d6;
-      box-shadow: 0 0 0 1px rgba(0,0,0,0.01);
-      padding: 14px 15px 13px;
+      width: min(980px, calc(100% - 1.5rem));
       display: flex;
-      gap: 22px;
-      justify-content: space-between;
       align-items: center;
-      color: var(--blue);
+      justify-content: space-between;
+      gap: 1rem;
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 0.7rem 0.8rem;
+      color: #25425d;
       font-family: Arial, sans-serif;
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .cookie-text a {
-      text-decoration: underline;
+      font-size: 0.82rem;
+      line-height: 1.35;
+      box-shadow: 0 2px 10px rgba(0,0,0,.04);
     }
 
     .cookie button {
-      flex: 0 0 auto;
-      background: #fff;
       border: 1px solid #d6d6d6;
-      border-radius: 5px;
-      padding: 11px 15px;
-      font: inherit;
-      font-size: 15px;
+      background: #fff;
+      border-radius: 4px;
       color: #25425d;
+      padding: 0.7rem 0.9rem;
       cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .cookie a {
+      color: #25425d;
+      text-decoration: underline;
     }
 
     @media (max-width: 900px) {
-      .hero {
-        margin-left: 0;
-        margin-right: 0;
-      }
+      :root { --pad: 1.5rem; }
 
-      .hero-inner {
-        grid-template-columns: 1fr 330px;
-      }
-
-      .hero-photo {
-        width: 320px;
-        height: 333px;
-      }
-
-      .hero-title {
-        font-size: clamp(56px, 8vw, 82px);
-      }
-    }
-
-    @media (max-width: 760px) {
-      .hero {
-        min-height: 0;
-      }
-
-      .hero-inner {
-        display: block;
-        min-height: 0;
-      }
-
-      .hero-copy {
-        padding: 30px 22px 34px;
-      }
-
-      .hero-mark {
-        margin-bottom: 12px;
-      }
-
-      .hero-title {
-        font-size: clamp(52px, 14vw, 74px);
-        letter-spacing: -2.7px;
-        white-space: normal;
-        margin-bottom: 34px;
-      }
-
-      .intro {
-        font-size: 19px;
-      }
-
-      .nav {
-        font-size: 18px;
-        margin-left: 0;
-      }
-
-      .hero-photo-wrap {
-        padding: 0 0 30px 22px;
-      }
-
-      .hero-photo {
-        width: min(352px, calc(100vw - 44px));
-        height: auto;
-      }
-
-      .page {
-        width: calc(100vw - 32px);
-        padding-top: 90px;
-      }
-
-      .callouts {
+      .hero-columns {
         grid-template-columns: 1fr;
       }
 
-      .callout,
-      .callout:nth-child(2),
-      .callout:nth-child(3) {
-        min-height: 150px;
+      .hero-photo-col {
+        padding-top: 0;
+        margin-top: 1.5rem;
+      }
+
+      .hero-photo {
+        width: 358px;
+      }
+
+      .body-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .research-column {
+        border-right: 0;
+        padding-right: 0;
+        border-bottom: 1px solid var(--red);
+        padding-bottom: 2rem;
+      }
+
+      .posters-column {
+        border-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    @media (max-width: 700px) {
+      :root { --pad: 1rem; }
+
+      .hero {
+        min-height: 0;
+        padding-top: 2rem;
+      }
+
+      .top-row {
+        min-height: 0;
+      }
+
+      .identity-logo {
+        width: 44px;
+        height: 48px;
+      }
+
+      .hero-title {
+        margin-top: 2rem;
+        letter-spacing: -0.1rem;
+      }
+
+      .hero-bottom {
+        padding-right: 0;
+      }
+
+      .highlight-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .highlight,
+      .highlight:nth-child(2),
+      .highlight:last-child {
         border-left: 0;
         border-right: 0;
-        border-bottom: 1px solid var(--rule);
+        border-bottom: 1px solid var(--red);
       }
 
-      .callout:last-child {
-        border-bottom: 0;
-      }
-
-      .callout {
-        font-size: clamp(23px, 6vw, 31px);
-        padding-inline: 26px;
-      }
-
-      .section-title {
-        font-size: clamp(24px, 6vw, 30px);
-      }
-
-      .research-text,
-      .featured-copy {
-        font-size: 19px;
-      }
+      .highlight:last-child { border-bottom: 0; }
 
       .cookie {
-        bottom: 8px;
-        width: calc(100vw - 20px);
-        padding: 10px;
-        gap: 10px;
-      }
-
-      .cookie button {
-        padding: 9px 11px;
-        font-size: 13px;
-      }
-
-      .poster-item:last-child {
-        width: 92%;
-        margin-left: 5.4%;
+        width: calc(100% - 1rem);
+        bottom: 0.5rem;
+        padding: 0.55rem;
+        font-size: 0.72rem;
       }
     }
   </style>
 </head>
-
 <body>
 
   <header class="hero">
-    <div class="hero-inner">
+    <div class="hero-shell">
+      <div class="hero-columns">
 
-      <div class="hero-copy">
+        <div class="hero-left">
+          <div class="top-row">
+            <div class="identity">
+              <a href="index.html" aria-label="Marina Kapitanov home">
+                <img
+                  class="identity-logo"
+                  src="https://marinakapitanov.wordpress.com/wp-content/uploads/2024/06/img_0429.png?w=174"
+                  alt=""
+                />
+              </a>
+              <div class="site-title"><a href="index.html">Marina Kapitanov</a></div>
+            </div>
 
-        <img
-          class="hero-mark"
-          src="res/resume_back_button.png"
-          alt=""
-        />
+            <div class="top-social" aria-label="Contact links">
+              <a class="social-link" href="mailto:mckapitanov@gmail.com" aria-label="Email Marina Kapitanov">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19,5H5c-1.1,0-2,.9-2,2v10c0,1.1.9,2,2,2h14c1.1,0,2-.9,2-2V7c0-1.1-.9-2-2-2zm.5,12c0,.3-.2.5-.5.5H5c-.3,0-.5-.2-.5-.5V9.8l7.5,5.6,7.5-5.6V17zm0-9.1L12,13.6,4.5,7.9V7c0-.3.2-.5.5-.5h14c.3,0,.5.2.5.5v.9z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
 
-        <h1 class="hero-title">Marina Kapitanov</h1>
+          <h1 class="hero-title"><a href="index.html">M</a>arina Kapitanov</h1>
 
-        <p class="intro">
-          Hello! I’m Marina, a motivated, creative biomedical engineering undergraduate student seeking research experience in diving medicine. Scroll to learn more!
-        </p>
+          <div class="hero-bottom">
+            <p class="intro">
+              Hello! I’m Marina, a motivated, creative biomedical engineering undergraduate student seeking research experience in diving medicine. Scroll to learn more!
+            </p>
 
-        <nav class="nav" aria-label="Primary">
-          <span class="slash">/</span>
-          <a href="resume.html">Resume</a>
-          <span class="slash">/</span>
-          <a href="https://www.linkedin.com/in/marina-kapitanov" target="_blank" rel="noopener">Linkedin</a>
-          <span class="slash">/</span>
-          <a href="https://www.instagram.com/mck.artist/" target="_blank" rel="noopener">Instagram</a>
-          <span class="slash mail-slash">/</span>
-          <a class="mail-link" href="mailto:mckapit2@email.unc.edu">Mail</a>
-        </nav>
+            <div class="nav-wrap">
+              <nav class="hero-nav" aria-label="Header navigation">
+                <a href="resume.html">Resume</a>
+                <span class="slash">/</span>
+                <a href="https://www.linkedin.com/in/marina-kapitanov" target="_blank" rel="noopener noreferrer">Linkedin</a>
+                <span class="slash">/</span>
+                <a href="https://www.instagram.com/mck.artist/" target="_blank" rel="noopener noreferrer">Instagram</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-photo-col">
+          <img
+            class="hero-photo"
+            src="https://marinakapitanov.com/wp-content/uploads/2023/06/img_9611.jpeg"
+            alt="Profile Picture"
+          />
+        </div>
 
       </div>
-
-      <div class="hero-photo-wrap">
-        <img
-          class="hero-photo"
-          src="https://marinakapitanov.com/wp-content/uploads/2023/06/img_9611.jpeg"
-          alt="Portrait of Marina Kapitanov"
-        />
-      </div>
-
     </div>
   </header>
 
-  <main class="page">
-
-    <section class="callouts" aria-label="Highlights">
-
-      <div class="callout">
-        Participating in a year-long academic exchange at Nagoya University, Japan
+  <main>
+    <section class="highlights content-shell" aria-label="Highlights">
+      <div class="highlight-grid">
+        <article class="highlight">
+          <h2>Participating in a year-long academic exchange at Nagoya University, Japan</h2>
+        </article>
+        <article class="highlight">
+          <h2>Studying at the Joint Department of Biomedical Engineering at NC State &amp; University of North Carolina Chapel Hill</h2>
+        </article>
+        <article class="highlight">
+          <h2>Researching with Divers Alert Network in Durham, North Carolina</h2>
+        </article>
       </div>
-
-      <div class="callout">
-        Studying at the Joint Department of Biomedical Engineering at NC State &amp; University of North Carolina Chapel Hill
-      </div>
-
-      <div class="callout">
-        Researching with Divers Alert Network in Durham, North Carolina
-      </div>
-
     </section>
 
-    <section class="section-box" aria-labelledby="research-heading">
+    <section class="body-grid content-shell">
+      <div class="research-column">
+        <div class="body-spacer"></div>
 
-      <h2 id="research-heading" class="section-title">
-        Researching with Divers Alert Network in Durham, North Carolina
-      </h2>
+        <div class="research-copy">
+          <p>
+            I am a fourth year engineering student at NC State passionate about research into environmental physiology and variability studies. I have been involved in a range of projects, all leading to my pursuit of studying diving medicine with the Divers Alert Network (DAN).
+          </p>
 
-      <div class="research-text">
+          <p>
+            My current involvement with DAN consists of work on their venous gas emboli variability project, focusing on the correlation between various stress and inflammation factors contributing to decompression stress and how they differ within and between individual divers pre- and post- dive. I am interested in continuing to pursue similar projects in dive medicine in graduate school and in my career.
+          </p>
 
-        <p>
-          I am a fourth year engineering student at NC State passionate about research into environmental physiology and variability studies. I have been involved in a range of projects, all leading to my pursuit of studying diving medicine with the Divers Alert Network (DAN).
-        </p>
-
-        <p>
-          My current involvement with DAN consists of work on their venous gas emboli variability project, focusing on the correlation between various stress and inflammation factors contributing to decompression stress and how they differ within and between individual divers pre- and post- dive. I am interested in continuing to pursue similar projects in dive medicine in graduate school and in my career.
-        </p>
-
-        <p>
-          Originally from Richmond, Virginia, I study and have engaged in research in Raleigh, North Carolina. I have also interned at the Bulgarian Academy of Science, studied in Heidelberg, Germany and am now on exchange in Nagoya, Japan for a year. My hobbies include appreciating and making art, watching live music, riding my motorcycle, and scuba diving.
-        </p>
-
-      </div>
-
-      <h2 class="featured-heading">
-        Recently Featured!
-      </h2>
-
-    </section>
-
-    <section class="featured" aria-label="Recently Featured">
-
-      <img
-        class="dive-photo"
-        src="https://marinakapitanov.com/wp-content/uploads/2024/06/img_8704.jpeg?w=1024"
-        alt="Marina Kapitanov diving underwater"
-      />
-
-      <div class="featured-copy">
-
-        <p>
-          While on exchange in Japan, I was fortunate to earn a stipend through my biomedical engineering program’s Abrams Research Scholarship to continue my research with the DAN team! After the end of the semester, I reflected on my time so far working with them and what I have to look forward to in the future.
-        </p>
-
-        <p>
-          Please click
-          <a href="https://dan.org/safety-prevention/diver-safety/divers-blog/student-scholar-dan-research-mentorship/">
-            here
-          </a>
-          to read the DAN blog post and learn more about my work!
-        </p>
-
-        <p>
-          Also, please see my
-          <a href="https://www.instagram.com/mck.artist/">
-            Instagram
-          </a>
-          for updates on my life in the Nagoya University Program for Academic Exchange!
-        </p>
-
-        <p>
-          At Nagoya University, I am engaging in a guided independent research project at the Biomechanics Lab. There, I am studying the effects of osteonecrosis on osteoblasts, especially after a simulated dive.
-        </p>
-
-      </div>
-
-      <h2 class="posters-heading">
-        Posters and Presentations:
-      </h2>
-
-    </section>
-
-    <section class="poster-grid" aria-label="Posters and Presentations">
-
-      <article class="poster-item">
-
-        <img
-          src="https://marinakapitanov.com/wp-content/uploads/2024/06/img_5115.jpeg?w=1024"
-          alt="Stress and Inflammation Salivary Analytes poster presentation"
-        />
-
-        <div class="caption">
-          Stress and Inflammation Salivary Analytes Collected from Standardized Dives, Undersea and Hyperbaric Medicine Annual Scientific Meeting, San Diego, CA 2024
+          <p>
+            Originally from Richmond, Virginia, I study and have engaged in research in Raleigh, North Carolina. I have also interned at the Bulgarian Academy of Science, studied in Heidelberg, Germany and am now on exchange in Nagoya, Japan for a year. My hobbies include appreciating and making art, watching live music, riding my motorcycle, and scuba diving.
+          </p>
         </div>
 
-      </article>
+        <hr class="separator" />
+        <h2 class="recent-heading">Recently Featured!</h2>
 
-      <article class="poster-item">
-
-        <img
-          src="https://marinakapitanov.com/wp-content/uploads/2024/06/img_9599.jpeg?w=1024"
-          alt="Microtissue Contraction poster presentation"
-        />
-
-        <div class="caption">
-          Microtissue Contraction of Human Mesenchymal Stem Cells in Extracellular Matrix Hydrogels Derived from Respiratory Tissues, NC State Undergraduate Research and Creativity Symposium 2023, Raleigh, NC.
+        <div class="recent-image-wrap">
+          <img
+            class="dive-photo"
+            src="https://marinakapitanov.com/wp-content/uploads/2024/06/img_8704.jpeg?w=1024"
+            alt="Marina Kapitanov diving underwater"
+          />
         </div>
 
-      </article>
+        <div class="featured-copy">
+          <p>
+            While on exchange in Japan, I was fortunate to earn a stipend through my biomedical engineering program’s Abrams Research Scholarship to continue my research with the DAN team! After the end of the semester, I reflected on my time so far working with them and what I have to look forward to in the future.
+          </p>
 
-      <article class="poster-item">
+          <p>
+            <a href="https://dan.org/safety-prevention/diver-safety/divers-blog/student-scholar-dan-research-mentorship/">Please click <strong>here</strong> to read the DAN blog post and learn more about my work!</a>
+          </p>
 
-        <img
-          src="https://marinakapitanov.com/wp-content/uploads/2024/06/img_4968.jpeg?w=1024"
-          alt="Simplifying Finite Element Models poster presentation"
-        />
+          <p>
+            Also, please see my Instagram for updates on my life in the Nagoya University Program for Academic Exchange!
+          </p>
 
-        <div class="caption">
-          Simplifying Finite Element Model of Trabecular Bone in a Rat Model of Brachial Plexus Birth Injury, NC State Summer Undergraduate Research and Creativity Symposium 2021, Raleigh, NC.
+          <p>
+            At Nagoya University, I am engaging in a guided independent research project at the Biomechanics Lab. There, I am studying the effects of osteonecrosis on osteoblasts, especially after a simulated dive.
+          </p>
         </div>
+      </div>
 
-      </article>
+      <aside class="posters-column" aria-labelledby="posters-heading">
+        <h2 id="posters-heading" class="posters-title">Posters and Presentations:</h2>
 
+        <figure class="poster-card">
+          <img src="https://marinakapitanov.com/wp-content/uploads/2024/06/img_5115.jpeg?w=1024" alt="Stress and Inflammation Salivary Analytes poster presentation" />
+          <figcaption class="poster-caption">
+            Stress and Inflammation Salivary Analytes Collected from Standardized Dives, Undersea and Hyperbaric Medicine Annual Scientific Meeting, San Diego, CA 2024
+          </figcaption>
+        </figure>
+
+        <figure class="poster-card">
+          <img src="https://marinakapitanov.com/wp-content/uploads/2024/06/img_9599.jpeg?w=1024" alt="Microtissue Contraction poster presentation" />
+          <figcaption class="poster-caption">
+            Microtissue Contraction of Human Mesenchymal Stem Cells in Extracellular Matrix Hydrogels Derived from Respiratory Tissues, NC State Undergraduate Research and Creativity Symposium 2023, Raleigh, NC.
+          </figcaption>
+        </figure>
+
+        <figure class="poster-card">
+          <img src="https://marinakapitanov.com/wp-content/uploads/2024/06/img_4968.jpeg?w=1024" alt="Simplifying Finite Element Model poster presentation" />
+          <figcaption class="poster-caption">
+            Simplifying Finite Element Model of Trabecular Bone in a Rat Model of Brachial Plexus Birth Injury, NC State Summer Undergraduate Research and Creativity Symposium 2021, Raleigh, NC.
+          </figcaption>
+        </figure>
+      </aside>
     </section>
-
-    <footer class="footer">
-
-      <div>
-        Please feel free to reach out about future opportunities!
-      </div>
-
-      <div class="socials" aria-label="Social links">
-
-        <a
-          href="https://www.instagram.com/mck.artist/"
-          aria-label="Instagram"
-        >
-          <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
-            <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
-          </svg>
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/marina-kapitanov"
-          aria-label="LinkedIn"
-        >
-          <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
-            <line x1="8" y1="10" x2="8" y2="17" stroke="currentColor" stroke-width="2"/>
-            <circle cx="8" cy="7.5" r="1.1" fill="currentColor"/>
-            <path d="M12 17v-4a2.4 2.4 0 0 1 2.4-2.4c1.5 0 2.6 1 2.6 3V17" fill="none" stroke="currentColor" stroke-width="2"/>
-            <line x1="12" y1="11" x2="12" y2="17" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </a>
-
-        <a
-          href="mailto:mckapit2@email.unc.edu"
-          aria-label="Email Marina Kapitanov"
-        >
-          <svg class="social-icon mail" viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
-            <path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </a>
-
-      </div>
-
-    </footer>
-
   </main>
 
-  <aside class="cookie" id="cookieBanner" aria-label="Privacy and Cookies notice">
-
-    <div class="cookie-text">
-
-      <div>
-        Privacy &amp; Cookies: This site uses cookies. By continuing to use this website, you agree to their use.
-      </div>
-
-      <div>
-        To find out more, including how to control cookies, see here:
-        <a href="https://automattic.com/cookies/">
-          Cookie Policy
-        </a>
-      </div>
-
+  <footer class="footer">
+    <p>Please feel free to reach out about future opportunities!</p>
+    <div class="footer-socials" aria-label="Social links">
+      <a href="https://www.instagram.com/mck.artist/" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12,4.622c2.403,0,2.688,0.009,3.637,0.052c0.877,0.04,1.354,0.187,1.671,0.31c0.42,0.163,0.72,0.358,1.035,0.673c0.315,0.315,0.51,0.615,0.673,1.035c0.123,0.317,0.27,0.794,0.31,1.671c0.043,0.949,0.052,1.234,0.052,3.637s-0.009,2.688-0.052,3.637c-0.04,0.877-0.187,1.354-0.31,1.671c-0.163,0.42-0.358,0.72-0.673,1.035c-0.315,0.315-0.615,0.51-1.035,0.673c-0.317,0.123-0.794,0.27-1.671,0.31c-0.949,0.043-1.233,0.052-3.637,0.052s-2.688-0.009-3.637-0.052c-0.877-0.04-1.354-0.187-1.671-0.31c-0.42-0.163-0.72-0.358-1.035-0.673c-0.315-0.315-0.51-0.615-0.673-1.035c-0.123-0.317-0.27-0.794-0.31-1.671C4.631,14.688,4.622,14.403,4.622,12s0.009-2.688,0.052-3.637c0.04-0.877,0.187-1.354,0.31-1.671c0.163-0.42,0.358-0.72,0.673-1.035c0.315-0.315,0.615-0.51,1.035-0.673c0.317-0.123,0.794-0.27,1.671-0.31C9.312,4.631,9.597,4.622,12,4.622 M12,3 C9.556,3,9.249,3.01,8.289,3.054C7.331,3.098,6.677,3.25,6.105,3.472C5.513,3.702,5.011,4.01,4.511,4.511 c-0.5,0.5-0.808,1.002-1.038,1.594C3.25,6.677,3.098,7.331,3.054,8.289C3.01,9.249,3,9.556,3,12c0,2.444,0.01,2.751,0.054,3.711 c0.044,0.958,0.196,1.612,0.418,2.185c0.23,0.592,0.538,1.094,1.038,1.594c0.5,0.5,1.002,0.808,1.594,1.038 c0.572,0.222,1.227,0.375,2.185,0.418C9.249,20.99,9.556,21,12,21s2.751-.01,3.711-.054c0.958-.044,1.612-.196,2.185-.418 c0.592-.23,1.094-.538,1.594-1.038c0.5-.5,0.808-1.002,1.038-1.594c0.222-.572,0.375-1.227,0.418-2.185 C20.99,14.751,21,14.444,21,12s-.01-2.751-.054-3.711c-.044-.958-.196-1.612-.418-2.185c-.23-.592-.538-1.094-1.038-1.594 c-.5-.5-1.002-.808-1.594-1.038c-.572-.222-1.227-.375-2.185-.418C14.751,3.01,14.444,3,12,3L12,3z M12,7.378 c-2.552,0-4.622,2.069-4.622,4.622S9.448,16.622,12,16.622s4.622-2.069,4.622-4.622S14.552,7.378,12,7.378z M12,15 c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S13.657,15,12,15z M16.804,6.116c-.596,0-1.08,.484-1.08,1.08s.484,1.08,1.08,1.08c.596,0,1.08-.484,1.08-1.08S17.401,6.116,16.804,6.116z"/>
+        </svg>
+      </a>
+      <a href="https://www.linkedin.com/in/marina-kapitanov" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19.7,3H4.3C3.582,3,3,3.582,3,4.3v15.4C3,20.418,3.582,21,4.3,21h15.4c.718,0,1.3-.582,1.3-1.3V4.3C21,3.582,20.418,3,19.7,3z M8.339,18.338H5.667v-8.59h2.672V18.338z M7.004,8.574c-.857,0-1.549-.694-1.549-1.548c0-.855,.691-1.548,1.549-1.548c.854,0,1.547,.694,1.547,1.548C8.551,7.881,7.858,8.574,7.004,8.574z M18.339,18.338h-2.669v-4.177c0-.996-.017-2.278-1.387-2.278c-1.389,0-1.601,1.086-1.601,2.206v4.249h-2.667v-8.59h2.559v1.174h.037c.356-.675,1.227-1.387,2.526-1.387c2.703,0,3.203,1.779,3.203,4.092V18.338z"/>
+        </svg>
+      </a>
+      <a href="mailto:mckapitanov@gmail.com" aria-label="Email Marina Kapitanov">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19,5H5c-1.1,0-2,.9-2,2v10c0,1.1,.9,2,2,2h14c1.1,0,2-.9,2-2V7c0-1.1-.9-2-2-2zm.5,12c0,.3-.2,.5-.5,.5H5c-.3,0-.5-.2-.5-.5V9.8l7.5,5.6,7.5-5.6V17zm0-9.1L12,13.6,4.5,7.9V7c0-.3,.2-.5,.5-.5h14c.3,0,.5,.2,.5,.5v.9z"/>
+        </svg>
+      </a>
     </div>
+  </footer>
 
-    <button type="button" id="cookieAccept">
-      Close and accept
-    </button>
-
+  <aside class="cookie" id="cookieBanner" aria-label="Privacy and Cookies notice">
+    <div>
+      Privacy &amp; Cookies: This site uses cookies. By continuing to use this website, you agree to their use.<br />
+      To find out more, including how to control cookies, see <a href="https://automattic.com/cookies/">Cookie Policy</a>.
+    </div>
+    <button type="button" id="cookieAccept">Close and accept</button>
   </aside>
 
   <script>
@@ -771,6 +674,5 @@
       document.getElementById('cookieBanner').remove();
     });
   </script>
-
 </body>
 </html>
