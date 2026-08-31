@@ -33,10 +33,10 @@
       --content-width: 1200px;
 
       /* Header dimensions */
-      --hero-height: 212px;
-      --hero-content-width: 375px;
-      --photo-width: 112px;
-      --photo-height: 135px;
+      --hero-height: 830px;
+      --hero-content-width: 1200px;
+      --photo-width: 358px;
+      --photo-height: auto;
     }
 
     *,
@@ -86,18 +86,12 @@
        ========================================================= */
 
     .hero {
-      position: relative;
       width: 100%;
-      height: var(--hero-height);
       min-height: var(--hero-height);
-
       margin: 0;
-      padding: 0;
-
-      background: var(--red);
+      padding: 4rem 0;
+      background: linear-gradient(to bottom, var(--red) 82%, var(--base) 82%);
       color: var(--base);
-
-      overflow: hidden;
     }
 
     /*
@@ -108,12 +102,7 @@
       which matches the reference image.
     */
     .hero-shell {
-      position: relative;
-
-      width: var(--hero-content-width);
-      max-width: calc(100% - 2rem);
-      height: 100%;
-
+      width: min(var(--hero-content-width), calc(100% - 4rem));
       margin: 0 auto;
       padding: 0;
     }
@@ -131,19 +120,14 @@
         headshot
     */
     .hero-columns {
-      position: relative;
-
       display: grid;
-      grid-template-columns: minmax(0, 1fr) var(--photo-width);
-      column-gap: 12px;
-
-      width: 100%;
-      height: 100%;
+      grid-template-columns: 66.66% 33.34%;
+      gap: 0;
+      align-items: start;
     }
 
     .hero-left {
-      min-width: 0;
-      height: 100%;
+      padding-right: 1.5rem;
     }
 
 
@@ -152,47 +136,34 @@
        ========================================================= */
 
     .top-row {
-      height: 39px;
-
-      padding-top: 7px;
-
+      min-height: 94px;
+      padding: 0.67rem 0;
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-
-      gap: 8px;
+      gap: 1rem;
     }
 
     .identity {
       display: flex;
       align-items: center;
-
-      min-width: 0;
-
-      gap: 4px;
-
+      gap: 0.5rem;
       color: var(--base);
     }
 
     .identity-logo {
-      width: 19px;
-      height: 22px;
-
-      flex: 0 0 auto;
-
+      width: 52px;
+      height: 57px;
       object-fit: contain;
+      display: block;
+      flex: 0 0 auto;
     }
 
     .site-title {
-      min-width: 0;
-
-      color: var(--base);
-
-      font-size: 7px;
+      font-size: clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.455), 1.25rem);
       font-weight: 700;
       line-height: 1;
-
-      white-space: nowrap;
+      color: var(--base);
     }
 
     .site-title a {
@@ -202,29 +173,23 @@
     .top-social {
       display: flex;
       align-items: center;
-
-      padding-top: 0;
-
-      flex: 0 0 auto;
+      gap: 0.5rem;
+      padding-top: 0.1rem;
     }
 
     .social-link {
-      width: 12px;
-      height: 12px;
-
+      width: 32px;
+      height: 32px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-
       color: var(--base);
     }
 
     .social-link svg {
-      width: 8px;
-      height: 8px;
-
+      width: 24px;
+      height: 24px;
       display: block;
-
       fill: currentColor;
     }
 
@@ -234,22 +199,15 @@
        ========================================================= */
 
     .hero-title {
-      width: max-content;
-      max-width: 100%;
-
-      margin: 22px 0 0;
-
+      margin-top: 2.75rem;
+      margin-bottom: 2rem;
       color: var(--base);
-
       font-family: "Instrument Serif", Georgia, serif;
-      font-size: 38px;
+      font-size: clamp(3.8rem, 3.8rem + ((1vw - 0.2rem) * 7.636), 8rem);
       font-style: normal;
       font-weight: 400;
-
-      letter-spacing: -1.4px;
-      line-height: 0.9;
-
-      white-space: nowrap;
+      letter-spacing: -0.2rem;
+      line-height: 1;
     }
 
     .hero-title a {
@@ -262,48 +220,37 @@
        ========================================================= */
 
     .hero-bottom {
-      width: 100%;
-      max-width: 235px;
-
-      margin-top: 8px;
-
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      padding-right: 2.5rem;
       display: flex;
       flex-direction: column;
-
-      gap: 7px;
+      gap: 2rem;
     }
 
     .intro {
       color: var(--base);
-
-      font-size: 7px;
-      font-weight: 400;
-
+      font-size: inherit;
       line-height: 1.2;
     }
 
     .nav-wrap {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-
-      width: 100%;
+      gap: 0.5rem;
+      justify-content: flex-end;
+      color: var(--ink);
     }
 
     .hero-nav {
       display: flex;
       align-items: center;
-      flex-wrap: nowrap;
-
-      gap: 3px;
-
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 0.5rem;
       color: var(--ink);
-
-      font-size: 6.5px;
       font-weight: 600;
-
       line-height: 1;
-      white-space: nowrap;
     }
 
     .hero-nav a,
@@ -317,16 +264,7 @@
        ========================================================= */
 
     .hero-photo-col {
-      position: relative;
-
-      width: var(--photo-width);
-      height: 100%;
-
-      padding: 39px 0 0;
-
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-end;
+      padding-top: 4rem;
     }
 
     /*
@@ -338,22 +276,10 @@
     */
     .hero-photo {
       display: block;
-
-      width: var(--photo-width);
-      height: var(--photo-height);
-
-      max-width: none;
-
+      width: 358px;
+      max-width: 100%;
+      border: 8px solid var(--base);
       margin: 0;
-
-      padding: 0;
-
-      border: 2px solid var(--base);
-
-      object-fit: cover;
-      object-position: center;
-
-      background: var(--base);
     }
 
 
@@ -632,17 +558,21 @@
         --page-pad: 1.5rem;
       }
 
-      /*
-        Keep the desktop header composition until it becomes
-        genuinely too narrow.
-      */
-      .hero {
-        height: 212px;
-        min-height: 212px;
+      .hero-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-photo-col {
+        padding-top: 0;
+        margin-top: 1.5rem;
+      }
+
+      .hero-photo {
+        width: 358px;
       }
 
       .hero-shell {
-        width: 375px;
+        width: min(var(--content-width), calc(100% - 3rem));
       }
 
       .body-grid {
@@ -676,21 +606,12 @@
       }
 
       .hero {
-        height: auto;
         min-height: 0;
-
-        padding: 1.5rem 0 2rem;
-
-        overflow: visible;
+        padding-top: 2rem;
       }
 
       .hero-shell {
-        width: min(
-          100%,
-          calc(100% - 2rem)
-        );
-
-        height: auto;
+        width: min(var(--content-width), calc(100% - 2rem));
       }
 
       .hero-columns {
@@ -736,62 +657,35 @@
       }
 
       .hero-title {
-        width: auto;
-
-        margin-top: 1.5rem;
-
-        font-size: clamp(
-          2.8rem,
-          12vw,
-          4.2rem
-        );
-
-        letter-spacing: -1px;
-
-        white-space: normal;
+        margin-top: 2rem;
+        letter-spacing: -0.1rem;
       }
 
       .hero-bottom {
-        max-width: 100%;
-
-        margin-top: 1rem;
-
-        gap: 1rem;
+        padding-right: 0;
       }
 
       .intro {
         max-width: 340px;
-
-        font-size: 0.75rem;
       }
 
       .nav-wrap {
-        justify-content: flex-start;
+        justify-content: flex-end;
       }
 
       .hero-nav {
         font-size: 0.7rem;
         gap: 4px;
-
-        flex-wrap: wrap;
-        white-space: normal;
       }
 
       .hero-photo-col {
-        width: 100%;
-        height: auto;
-
-        padding: 1.5rem 0 0;
-
-        display: flex;
-        justify-content: flex-start;
+        padding-top: 1.5rem;
+        margin-top: 0;
       }
 
       .hero-photo {
-        width: 112px;
-        height: 135px;
-
-        max-width: none;
+        width: 358px;
+        max-width: 100%;
       }
 
       .highlight-grid {
@@ -824,8 +718,8 @@
       }
 
       .hero-photo {
-        width: 100px;
-        height: 121px;
+        width: 100%;
+        max-width: 358px;
       }
     }
   </style>
