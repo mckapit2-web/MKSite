@@ -3,120 +3,237 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Resume of Marina Kapitanov — biomedical engineering student interested in research, environmental physiology, and diving medicine."
+  />
   <title>Resume | Marina Kapitanov</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Urbanist:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
     :root {
-      --red: #b72932;
-      --ink: #050505;
-      --offwhite: #f4f5f5;
-      --white: #fff;
-      --max: 916px;
+      --base: #f4f6f3;
+      --red: #b72831;
+      --red-dark: #8f1e29;
+      --ink: #111111;
+      --muted: #6d6465;
+      --line: rgba(183, 40, 49, 0.16);
+      --white: #ffffff;
+      --page-pad: clamp(1rem, 3vw, 2rem);
+      --content-width: 1240px;
+      --radius: 24px;
+      --shadow: 0 18px 50px rgba(183, 40, 49, 0.10);
     }
 
-    * {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
     }
 
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      min-height: 100%;
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background: var(--offwhite);
+      margin: 0;
+      min-height: 100vh;
+      background: var(--base);
       color: var(--ink);
       font-family: "Urbanist", Arial, sans-serif;
+      line-height: 1.3;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
+    a:hover {
+      text-decoration: none;
+    }
+
+    /* =========================
+       HERO
+       ========================= */
+
     .hero {
+      position: relative;
+      overflow: hidden;
       background: var(--red);
-      color: var(--white);
+      color: var(--base);
     }
 
     .hero-inner {
-      width: min(var(--max), calc(100vw - 48px));
+      width: min(var(--content-width), calc(100% - (var(--page-pad) * 2)));
+      min-height: 360px;
       margin: 0 auto;
-      min-height: 255px;
-      padding: 43px 0 47px;
+      padding: 1.5rem 0 4.25rem;
       position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-inner::after {
+      content: "CV / 2024";
+      position: absolute;
+      right: 0;
+      bottom: 1.4rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      opacity: 0.65;
+    }
+
+    .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
 
     .brand-mark {
-      display: inline-block;
-      margin-bottom: 48px;
+      display: inline-flex;
+      align-items: center;
+      transition: transform 0.2s ease;
+    }
+
+    .brand-mark:hover {
+      transform: translateY(-2px);
     }
 
     .brand-mark img {
-      display: block;
-      width: 80px;
-      height: 87px;
+      width: 58px;
+      height: 63px;
       object-fit: contain;
     }
 
     .header-links {
-      position: absolute;
-      top: 48px;
-      right: 10px;
       display: flex;
-      gap: 24px;
       align-items: center;
+      gap: 0.55rem;
     }
 
     .header-links a {
-      display: grid;
-      place-items: center;
-      width: 29px;
-      height: 29px;
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,0.25);
       border-radius: 50%;
-      background: #f3f3f3;
-      color: #555;
+      background: rgba(255,255,255,0.06);
+      color: var(--base);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .header-links a:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.14);
     }
 
     .header-links a.linkedin {
-      background: #0a66c2;
-      color: #fff;
+      background: var(--base);
+      color: #0a66c2;
+      border-color: var(--base);
     }
 
     .header-links svg {
-      width: 16px;
-      height: 16px;
+      width: 19px;
+      height: 19px;
     }
 
-    /* Same font as the index.html header */
+    .hero-copy {
+      margin-top: auto;
+      padding-top: 4rem;
+    }
+
+    .eyebrow {
+      margin-bottom: 0.7rem;
+      color: rgba(244,246,243,0.72);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
     h1 {
       margin: 0;
+      color: var(--base);
       font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(5rem, 10vw, 9rem);
       font-weight: 400;
-      font-size: 74px;
-      line-height: 1;
-      letter-spacing: -3px;
+      line-height: 0.84;
+      letter-spacing: -0.055em;
     }
 
+    .hero-rule {
+      width: 100%;
+      height: 1px;
+      margin-top: 2rem;
+      background: rgba(244,246,243,0.22);
+    }
+
+    /* =========================
+       MAIN
+       ========================= */
+
     main {
-      width: min(var(--max), calc(100vw - 48px));
+      width: min(var(--content-width), calc(100% - (var(--page-pad) * 2)));
       margin: 0 auto;
-      padding: 72px 0 110px;
+      padding: 4.5rem 0 6rem;
+    }
+
+    .resume-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: clamp(2rem, 5vw, 4.5rem);
+      align-items: start;
+    }
+
+    .resume-panel {
+      min-width: 0;
+    }
+
+    .section-kicker {
+      margin-bottom: 0.7rem;
+      color: var(--red);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0 0 1.5rem;
+      color: var(--red);
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
     }
 
     .resume-frame {
-      width: min(552px, 100%);
-      height: 620px;
-      margin: 0 auto;
-      border: 1px solid #d9d9d9;
-      background: #fff;
-      box-shadow: 0 0 0 8px #ececee;
+      width: 100%;
+      height: min(760px, 78vh);
+      min-height: 620px;
+      border: 1px solid rgba(183,40,49,0.18);
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.10);
     }
 
     .resume-frame iframe {
@@ -124,100 +241,171 @@
       width: 100%;
       height: 100%;
       border: 0;
-      background: #fff;
+      background: var(--white);
     }
 
-    .resume-actions {
-      width: min(552px, 100%);
-      margin: 32px auto 0;
+    .side-column {
+      position: sticky;
+      top: 2rem;
       display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      font-family: Georgia, serif;
-      color: var(--red);
-      font-size: 17px;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .action-card,
+    .info-card {
+      padding: 1.35rem;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.58);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    }
+
+    .action-card {
+      background: var(--red);
+      color: var(--base);
+      border-color: var(--red);
+    }
+
+    .card-label {
+      margin-bottom: 0.45rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      opacity: 0.72;
+    }
+
+    .file-name {
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.25;
     }
 
     .download-btn {
-      background: var(--red);
-      color: #fff;
-      padding: 12px 18px;
-      border-radius: 3px;
-      font-size: 15px;
-      font-family: Georgia, serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0.82rem 1rem;
+      border-radius: 999px;
+      background: var(--base);
+      color: var(--red);
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     .download-btn:hover {
-      opacity: .9;
+      transform: translateY(-2px);
+      opacity: 0.94;
     }
 
-    .note {
-      margin-top: 18px;
-      width: min(552px, 100%);
-      margin-left: auto;
-      margin-right: auto;
-      color: #666;
-      font-size: 14px;
+    .info-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
       line-height: 1.45;
     }
 
     .back {
-      display: block;
-      width: min(552px, 100%);
-      margin: 26px auto 0;
-      text-align: left;
-      text-decoration: underline;
-      text-underline-offset: 3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
       color: var(--red);
-      position: relative;
-      left: -200px;
+      font-size: 0.9rem;
+      font-weight: 600;
     }
 
-    .back:hover {
-      opacity: .8;
+    .back:hover span {
+      transform: translateX(-4px);
     }
 
-    @media (max-width: 760px) {
-      .hero-inner,
-      main {
-        width: calc(100vw - 32px);
-      }
+    .back span {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
 
+    /* =========================
+       MOBILE
+       ========================= */
+
+    @media (max-width: 900px) {
       .hero-inner {
-        min-height: 220px;
-        padding-top: 32px;
-        padding-bottom: 34px;
+        min-height: 320px;
       }
 
-      .brand-mark {
-        margin-bottom: 34px;
+      .resume-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .side-column {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .back {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-inner {
+        min-height: 285px;
+        padding-top: 1rem;
+        padding-bottom: 3rem;
       }
 
       .brand-mark img {
-        width: 80px;
-        height: 87px;
+        width: 48px;
+        height: 52px;
       }
 
-      .header-links {
-        top: 32px;
-        right: 0;
-        gap: 15px;
+      .header-links a {
+        width: 36px;
+        height: 36px;
+      }
+
+      .header-links svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .hero-copy {
+        padding-top: 3rem;
       }
 
       h1 {
-        font-size: 58px;
-        letter-spacing: -2px;
+        font-size: clamp(4rem, 20vw, 6rem);
       }
 
       main {
-        padding-top: 50px;
+        padding-top: 3rem;
+      }
+
+      .side-column {
+        grid-template-columns: 1fr;
+      }
+
+      .back {
+        grid-column: auto;
       }
 
       .resume-frame {
         height: 72vh;
         min-height: 520px;
-        box-shadow: 0 0 0 5px #ececee;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
       }
     }
   </style>
@@ -228,88 +416,111 @@
   <header class="hero">
     <div class="hero-inner">
 
-      <!-- Custom back/home image -->
-      <a class="brand-mark" href="index.html" aria-label="Back to portfolio">
-        <img
-          src="res/resume_back_button.png"
-          alt="Back to portfolio"
-        />
-      </a>
-
-      <div class="header-links" aria-label="Contact links">
-
-        <a
-          class="linkedin"
-          href="https://www.linkedin.com/in/marina-kapitanov"
-          target="_blank"
-          rel="noopener"
-          aria-label="LinkedIn"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              fill="currentColor"
-              d="M6.94 8.45H3.56V20h3.38V8.45ZM5.25 3A2.02 2.02 0 1 0 5.25 7.04 2.02 2.02 0 0 0 5.25 3ZM20.44 13.37c0-3.48-1.86-5.1-4.34-5.1-2 0-2.9 1.1-3.4 1.87v-1.7H9.32V20h3.38v-5.72c0-1.5.28-2.96 2.15-2.96 1.84 0 1.87 1.73 1.87 3.05V20h3.38l.34-6.63Z"
-            />
-          </svg>
+      <div class="top-row">
+        <a class="brand-mark" href="index.html" aria-label="Back to portfolio">
+          <img
+            src="res/resume_back_button.png"
+            alt="Back to portfolio"
+          />
         </a>
 
-        <a
-          href="mailto:mckapit2@email.unc.edu"
-          aria-label="Email Marina Kapitanov"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect
-              x="3.2"
-              y="5.2"
-              width="17.6"
-              height="13.6"
-              rx="1.8"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            />
-            <path
-              d="M4.6 7l7.4 5.6L19.4 7"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.8"
-            />
-          </svg>
-        </a>
+        <div class="header-links" aria-label="Contact links">
+          <a
+            class="linkedin"
+            href="https://www.linkedin.com/in/marina-kapitanov"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M6.94 8.45H3.56V20h3.38V8.45ZM5.25 3A2.02 2.02 0 1 0 5.25 7.04 2.02 2.02 0 0 0 5.25 3ZM20.44 13.37c0-3.48-1.86-5.1-4.34-5.1-2 0-2.9 1.1-3.4 1.87v-1.7H9.32V20h3.38v-5.72c0-1.5.28-2.96 2.15-2.96 1.84 0 1.87 1.73 1.87 3.05V20h3.38l.34-6.63Z"
+              />
+            </svg>
+          </a>
 
+          <a
+            href="mailto:mckapit2@email.unc.edu"
+            aria-label="Email Marina Kapitanov"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect
+                x="3.2"
+                y="5.2"
+                width="17.6"
+                height="13.6"
+                rx="1.8"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+              <path
+                d="M4.6 7l7.4 5.6L19.4 7"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
 
-      <h1>Resume</h1>
+      <div class="hero-copy">
+        <div class="eyebrow">Curriculum Vitae</div>
+        <h1>Resume</h1>
+        <div class="hero-rule"></div>
+      </div>
 
     </div>
   </header>
 
   <main>
+    <div class="resume-layout">
 
-    <div class="resume-frame">
-      <iframe
-        src="resume.pdf#toolbar=1&navpanes=0&scrollbar=1"
-        title="Marina Kapitanov resume preview"
-      ></iframe>
+      <section class="resume-panel" aria-labelledby="resume-preview-title">
+        <div class="section-kicker">Preview</div>
+        <h2 id="resume-preview-title" class="section-title">My Resume</h2>
+
+        <div class="resume-frame">
+          <iframe
+            src="resume.pdf#toolbar=1&navpanes=0&scrollbar=1"
+            title="Marina Kapitanov resume preview"
+          ></iframe>
+        </div>
+      </section>
+
+      <aside class="side-column">
+
+        <div class="action-card">
+          <div class="card-label">PDF</div>
+          <div class="file-name">KapitanovMarinaResume 2024-08-20</div>
+
+          <a
+            class="download-btn"
+            href="resume.pdf"
+            download="KapitanovMarinaResume-2024-08-20.pdf"
+          >
+            Download Resume
+          </a>
+        </div>
+
+        <div class="info-card">
+          <div class="card-label">Portfolio</div>
+          <p>
+            For research, biomedical engineering, diving medicine, and project
+            work, return to the main portfolio.
+          </p>
+        </div>
+
+        <a class="back" href="index.html">
+          <span>←</span>
+          Back to main page
+        </a>
+
+      </aside>
     </div>
-
-    <div class="resume-actions">
-      <span>KapitanovMarinaResume 2024-08-20</span>
-
-      <a
-        class="download-btn"
-        href="resume.pdf"
-        download="KapitanovMarinaResume-2024-08-20.pdf"
-      >
-        Download
-      </a>
-    </div>
-
-    <!-- Original bottom back-to-portfolio link -->
-    <a class="back" href="index.html">← Back to main page</a>
-
   </main>
 
 </body>
 </html>
-```
