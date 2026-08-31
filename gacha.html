@@ -273,6 +273,22 @@
       margin-top: 18px;
     }
 
+    .handle-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .handle-label {
+      color: var(--red-dark);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
     .turn-handle {
       width: 118px;
       height: 58px;
@@ -280,6 +296,30 @@
       background: var(--red-dark);
       border: 6px solid var(--red-dark);
       position: relative;
+      padding: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      flex: 0 0 auto;
+      transform-origin: center;
+      transition: transform 110ms ease, filter 110ms ease;
+    }
+
+    .turn-handle:hover {
+      filter: brightness(1.06);
+    }
+
+    .turn-handle:focus-visible {
+      outline: 3px solid var(--ink);
+      outline-offset: 4px;
+    }
+
+    .turn-handle:active {
+      transform: scale(0.96);
+    }
+
+    .turn-handle.turning {
+      animation: turnHandle 0.8s cubic-bezier(.2,.8,.2,1);
     }
 
     .turn-handle::before {
@@ -312,7 +352,7 @@
     }
 
     .coin::after {
-      content: "100";
+      content: "¥100";
       position: absolute;
       inset: 0;
       display: grid;
@@ -383,6 +423,13 @@
 
     .machine.opened .ball-bottom {
       animation: ballBottomOpen 0.45s ease-out forwards;
+    }
+
+    @keyframes turnHandle {
+      0% { transform: rotate(0deg); }
+      45% { transform: rotate(95deg); }
+      75% { transform: rotate(165deg); }
+      100% { transform: rotate(180deg); }
     }
 
     @keyframes dropBall {
@@ -551,7 +598,14 @@
       .coin { width: 50px; height: 50px; }
       .chute { width: 110px; height: 62px; bottom: -34px; }
 
-      @keyframes dropBall {
+      @keyframes turnHandle {
+      0% { transform: rotate(0deg); }
+      45% { transform: rotate(95deg); }
+      75% { transform: rotate(165deg); }
+      100% { transform: rotate(180deg); }
+    }
+
+    @keyframes dropBall {
         0% { opacity: 1; transform: translate(-76px, -205px) rotate(0deg); }
         45% { transform: translate(-76px, -103px) rotate(180deg); }
         72% { transform: translate(-76px, -44px) rotate(300deg); }
@@ -597,8 +651,13 @@
               <div class="dial"></div>
             </div>
             <div class="machine-controls">
-              <div class="turn-handle" aria-hidden="true"></div>
               <div class="coin" aria-hidden="true"></div>
+              <div class="handle-wrap">
+                <div class="handle-label">Push here!</div>
+                <button class="turn-handle" id="turnHandle" type="button" aria-label="Turn the gacha machine">
+                  <span aria-hidden="true"></span>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -614,9 +673,7 @@
       <section class="game-panel">
         <div class="panel-kicker">insert imaginary ¥100</div>
         <h2 class="panel-title">What will you get?</h2>
-        <p class="instructions">Press the button to turn the machine. A capsule will drop, pop open, and reveal a fortune picked just for you.</p>
-
-        <button class="gacha-button" id="gachaButton" type="button">TURN THE GACHA!</button>
+        <p class="instructions">Turn the machine's handle. A capsule will drop, pop open, and reveal a fortune picked just for you.</p>
 
         <div class="fortune" id="fortune" aria-live="polite">
           <div class="fortune-grade" id="fortuneGrade">Your fortune</div>
@@ -666,16 +723,19 @@
     ];
 
     const machine = document.getElementById("machine");
-    const button = document.getElementById("gachaButton");
+    const turnHandle = document.getElementById("turnHandle");
     const fortune = document.getElementById("fortune");
     const fortuneGrade = document.getElementById("fortuneGrade");
     const fortuneJp = document.getElementById("fortuneJp");
     const fortuneText = document.getElementById("fortuneText");
 
-    button.addEventListener("click", () => {
-      if (button.disabled) return;
+    turnHandle.addEventListener("click", () => {
+      if (turnHandle.disabled) return;
 
-      button.disabled = true;
+      turnHandle.disabled = true;
+      turnHandle.classList.remove("turning");
+      void turnHandle.offsetWidth;
+      turnHandle.classList.add("turning");
       fortune.classList.remove("show");
       machine.classList.remove("playing", "opened");
       void machine.offsetWidth;
@@ -693,7 +753,8 @@
         fortuneJp.textContent = result.jp;
         fortuneText.textContent = result.text;
         fortune.classList.add("show");
-        button.disabled = false;
+        turnHandle.disabled = false;
+        turnHandle.classList.remove("turning");
       }, 1570);
     });
   </script>
