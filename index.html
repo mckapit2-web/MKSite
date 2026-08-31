@@ -11,10 +11,6 @@
     content="Marina Kapitanov — biomedical engineering student interested in research, environmental physiology, and diving medicine."
   />
 
-  <!-- =========================================================
-       FONTS
-       ========================================================= -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -23,11 +19,9 @@
     rel="stylesheet"
   />
 
-
   <style>
-
     /* =========================================================
-       VARIABLES
+       GLOBAL
        ========================================================= */
 
     :root {
@@ -38,23 +32,12 @@
       --page-pad: 2rem;
       --content-width: 1200px;
 
-      /*
-        Header calibration
-        ------------------
-        The reference header is approximately 212px tall.
-        The overall composition is approximately 760px wide.
-      */
+      /* Header dimensions */
       --hero-height: 212px;
-      --hero-content-width: 760px;
-
+      --hero-content-width: 375px;
       --photo-width: 112px;
       --photo-height: 135px;
     }
-
-
-    /* =========================================================
-       RESET
-       ========================================================= */
 
     *,
     *::before,
@@ -68,15 +51,11 @@
 
     body {
       margin: 0;
-
       background: var(--base);
       color: var(--red);
-
       font-family: "Urbanist", sans-serif;
       font-size: 1rem;
       line-height: 1.2;
-
-      overflow-x: hidden;
     }
 
     img {
@@ -108,7 +87,6 @@
 
     .hero {
       position: relative;
-
       width: 100%;
       height: var(--hero-height);
       min-height: var(--hero-height);
@@ -123,47 +101,41 @@
     }
 
     /*
-      The header itself is centered.
+      This is deliberately a compact composition.
 
-      At a 1024px viewport:
-        (1024 - 760) / 2 = 132px
-
-      This gives the same general centered composition
-      as the original reference.
+      On a 1024px-wide screen:
+      375px centered = starts around x = 324px,
+      which matches the reference image.
     */
     .hero-shell {
       position: relative;
 
-      width: min(
-        var(--hero-content-width),
-        calc(100% - 2rem)
-      );
-
+      width: var(--hero-content-width);
+      max-width: calc(100% - 2rem);
       height: 100%;
 
       margin: 0 auto;
       padding: 0;
     }
 
+    /*
+      Desktop header layout:
 
-    /* =========================================================
-       HERO COLUMNS
-       ========================================================= */
+      LEFT:
+        logo/name
+        title
+        intro
+        navigation
 
+      RIGHT:
+        headshot
+    */
     .hero-columns {
       position: relative;
 
       display: grid;
-
-      /*
-        The left side gets the majority of the space.
-        The image gets a fixed-width column.
-      */
-      grid-template-columns:
-        minmax(0, 1fr)
-        var(--photo-width);
-
-      column-gap: 18px;
+      grid-template-columns: minmax(0, 1fr) var(--photo-width);
+      column-gap: 12px;
 
       width: 100%;
       height: 100%;
@@ -180,7 +152,7 @@
        ========================================================= */
 
     .top-row {
-      height: 38px;
+      height: 39px;
 
       padding-top: 7px;
 
@@ -188,25 +160,23 @@
       align-items: flex-start;
       justify-content: space-between;
 
-      gap: 1rem;
+      gap: 8px;
     }
 
     .identity {
       display: flex;
       align-items: center;
 
-      gap: 4px;
-
       min-width: 0;
+
+      gap: 4px;
 
       color: var(--base);
     }
 
     .identity-logo {
-      width: 21px;
-      height: 23px;
-
-      display: block;
+      width: 19px;
+      height: 22px;
 
       flex: 0 0 auto;
 
@@ -220,7 +190,6 @@
 
       font-size: 7px;
       font-weight: 700;
-
       line-height: 1;
 
       white-space: nowrap;
@@ -234,14 +203,14 @@
       display: flex;
       align-items: center;
 
-      padding-top: 1px;
+      padding-top: 0;
 
       flex: 0 0 auto;
     }
 
     .social-link {
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
 
       display: inline-flex;
       align-items: center;
@@ -251,8 +220,8 @@
     }
 
     .social-link svg {
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
 
       display: block;
 
@@ -268,27 +237,16 @@
       width: max-content;
       max-width: 100%;
 
-      margin-top: 20px;
-      margin-bottom: 0;
+      margin: 22px 0 0;
 
       color: var(--base);
 
       font-family: "Instrument Serif", Georgia, serif;
-
-      /*
-        Large enough to reproduce the reference composition.
-      */
-      font-size: clamp(
-        3.8rem,
-        3.8rem + ((1vw - 0.2rem) * 7.636),
-        8rem
-      );
-
+      font-size: 38px;
       font-style: normal;
       font-weight: 400;
 
-      letter-spacing: -0.2rem;
-
+      letter-spacing: -1.4px;
       line-height: 0.9;
 
       white-space: nowrap;
@@ -300,16 +258,14 @@
 
 
     /* =========================================================
-       HERO INTRO + NAVIGATION
+       HERO LOWER CONTENT
        ========================================================= */
 
     .hero-bottom {
       width: 100%;
-      max-width: 430px;
+      max-width: 235px;
 
-      margin-top: 7px;
-
-      padding: 0;
+      margin-top: 8px;
 
       display: flex;
       flex-direction: column;
@@ -318,11 +274,10 @@
     }
 
     .intro {
-      max-width: 430px;
-
       color: var(--base);
 
       font-size: 7px;
+      font-weight: 400;
 
       line-height: 1.2;
     }
@@ -330,7 +285,6 @@
     .nav-wrap {
       display: flex;
       align-items: center;
-
       justify-content: flex-start;
 
       width: 100%;
@@ -339,7 +293,6 @@
     .hero-nav {
       display: flex;
       align-items: center;
-
       flex-wrap: nowrap;
 
       gap: 3px;
@@ -350,7 +303,6 @@
       font-weight: 600;
 
       line-height: 1;
-
       white-space: nowrap;
     }
 
@@ -370,18 +322,19 @@
       width: var(--photo-width);
       height: 100%;
 
-      padding-top: 39px;
+      padding: 39px 0 0;
 
       display: flex;
       align-items: flex-start;
-      justify-content: flex-start;
+      justify-content: flex-end;
     }
 
     /*
-      Fixed dimensions are intentional.
+      IMPORTANT:
+      The image itself is now a small, fixed visual element.
 
-      The image can no longer determine the size of the
-      header or push itself underneath the header.
+      It is NOT allowed to determine the height of the hero,
+      and it is NOT a 358px-wide grid item.
     */
     .hero-photo {
       display: block;
@@ -392,19 +345,20 @@
       max-width: none;
 
       margin: 0;
+
       padding: 0;
 
       border: 2px solid var(--base);
 
-      background: var(--base);
-
       object-fit: cover;
       object-position: center;
+
+      background: var(--base);
     }
 
 
     /* =========================================================
-       MAIN CONTENT CONTAINER
+       HIGHLIGHTS
        ========================================================= */
 
     .content-shell {
@@ -415,11 +369,6 @@
 
       margin: 0 auto;
     }
-
-
-    /* =========================================================
-       HIGHLIGHTS
-       ========================================================= */
 
     .highlights {
       padding-top: 2rem;
@@ -476,7 +425,6 @@
       );
 
       font-weight: 600;
-
       line-height: 0.9;
     }
 
@@ -487,16 +435,10 @@
 
     .body-grid {
       display: grid;
-
       grid-template-columns: 66.66% 33.34%;
 
       border-bottom: 2px solid var(--red);
     }
-
-
-    /* =========================================================
-       RESEARCH COLUMN
-       ========================================================= */
 
     .research-column {
       min-width: 0;
@@ -504,6 +446,14 @@
       padding: 0 2rem 3rem 0;
 
       border-right: 1px solid var(--red);
+    }
+
+    .posters-column {
+      min-width: 0;
+
+      padding: 2rem 1rem 1.5rem;
+
+      border-left: 1px solid var(--red);
     }
 
     .body-spacer {
@@ -530,11 +480,6 @@
       margin-bottom: 0;
     }
 
-
-    /* =========================================================
-       FEATURED SECTION
-       ========================================================= */
-
     .separator {
       margin: 1.75rem 0 0;
 
@@ -554,7 +499,6 @@
       );
 
       font-weight: 600;
-
       line-height: 0.9;
     }
 
@@ -595,16 +539,8 @@
 
 
     /* =========================================================
-       POSTERS COLUMN
+       POSTERS
        ========================================================= */
-
-    .posters-column {
-      min-width: 0;
-
-      padding: 2rem 1rem 1.5rem;
-
-      border-left: 1px solid var(--red);
-    }
 
     .posters-title {
       margin-bottom: 1.5rem;
@@ -618,7 +554,6 @@
       );
 
       font-weight: 600;
-
       line-height: 0.9;
     }
 
@@ -644,7 +579,6 @@
       color: var(--red);
 
       font-size: 0.95em;
-
       line-height: 1.15;
     }
 
@@ -694,13 +628,13 @@
        ========================================================= */
 
     @media (max-width: 900px) {
-
       :root {
         --page-pad: 1.5rem;
       }
 
       /*
-        Keep the header compact on tablets.
+        Keep the desktop header composition until it becomes
+        genuinely too narrow.
       */
       .hero {
         height: 212px;
@@ -708,15 +642,9 @@
       }
 
       .hero-shell {
-        width: min(
-          760px,
-          calc(100% - 2rem)
-        );
+        width: 375px;
       }
 
-      /*
-        Main body becomes one column.
-      */
       .body-grid {
         grid-template-columns: 1fr;
       }
@@ -743,14 +671,10 @@
        ========================================================= */
 
     @media (max-width: 600px) {
-
       :root {
         --page-pad: 1rem;
       }
 
-      /*
-        On phones the hero is allowed to grow naturally.
-      */
       .hero {
         height: auto;
         min-height: 0;
@@ -761,7 +685,10 @@
       }
 
       .hero-shell {
-        width: calc(100% - 2rem);
+        width: min(
+          100%,
+          calc(100% - 2rem)
+        );
 
         height: auto;
       }
@@ -777,11 +704,9 @@
         height: auto;
       }
 
-
-      /* ---------- Mobile top row ---------- */
-
       .top-row {
         height: auto;
+
         min-height: 25px;
 
         padding-top: 0;
@@ -810,9 +735,6 @@
         height: 10px;
       }
 
-
-      /* ---------- Mobile title ---------- */
-
       .hero-title {
         width: auto;
 
@@ -824,13 +746,10 @@
           4.2rem
         );
 
-        letter-spacing: -0.1rem;
+        letter-spacing: -1px;
 
         white-space: normal;
       }
-
-
-      /* ---------- Mobile intro ---------- */
 
       .hero-bottom {
         max-width: 100%;
@@ -846,25 +765,17 @@
         font-size: 0.75rem;
       }
 
-
-      /* ---------- Mobile navigation ---------- */
-
       .nav-wrap {
         justify-content: flex-start;
       }
 
       .hero-nav {
         font-size: 0.7rem;
-
         gap: 4px;
 
         flex-wrap: wrap;
-
         white-space: normal;
       }
-
-
-      /* ---------- Mobile headshot ---------- */
 
       .hero-photo-col {
         width: 100%;
@@ -882,9 +793,6 @@
 
         max-width: none;
       }
-
-
-      /* ---------- Mobile highlights ---------- */
 
       .highlight-grid {
         grid-template-columns: 1fr;
@@ -911,7 +819,6 @@
        ========================================================= */
 
     @media (max-width: 380px) {
-
       .hero-title {
         font-size: 2.65rem;
       }
@@ -921,13 +828,11 @@
         height: 121px;
       }
     }
-
   </style>
 </head>
 
 
 <body>
-
 
   <!-- =========================================================
        HERO
@@ -939,18 +844,10 @@
 
       <div class="hero-columns">
 
-
-        <!-- ===================================================
-             LEFT HERO CONTENT
-             =================================================== -->
-
+        <!-- LEFT SIDE -->
         <div class="hero-left">
 
-
-          <!-- -----------------------------------------------
-               SITE IDENTITY
-               ----------------------------------------------- -->
-
+          <!-- Top identity / contact row -->
           <div class="top-row">
 
             <div class="identity">
@@ -959,30 +856,21 @@
                 href="index.html"
                 aria-label="Marina Kapitanov home"
               >
-
                 <img
                   class="identity-logo"
                   src="https://marinakapitanov.wordpress.com/wp-content/uploads/2024/06/img_0429.png?w=174"
                   alt=""
                 />
-
               </a>
 
-
               <div class="site-title">
-
                 <a href="index.html">
                   Marina Kapitanov
                 </a>
-
               </div>
 
             </div>
 
-
-            <!-- ---------------------------------------------
-                 EMAIL
-                 --------------------------------------------- -->
 
             <div
               class="top-social"
@@ -999,11 +887,9 @@
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
-
                   <path
                     d="M19,5H5c-1.1,0-2,.9-2,2v10c0,1.1.9,2,2,2h14c1.1,0,2-.9,2-2V7c0-1.1-.9-2-2-2zm.5,12c0,.3-.2.5-.5.5H5c-.3,0-.5-.2-.5-.5V9.8l7.5,5.6,7.5-5.6V17zm0-9.1L12,13.6,4.5,7.9V7c0-.3.2-.5.5-.5h14c.3,0,.5.2.5.5v.9z"
                   />
-
                 </svg>
 
               </a>
@@ -1013,23 +899,15 @@
           </div>
 
 
-          <!-- -----------------------------------------------
-               MAIN TITLE
-               ----------------------------------------------- -->
-
+          <!-- Main title -->
           <h1 class="hero-title">
-
             <a href="index.html">
               Marina Kapitanov
             </a>
-
           </h1>
 
 
-          <!-- -----------------------------------------------
-               INTRO + NAVIGATION
-               ----------------------------------------------- -->
-
+          <!-- Intro and navigation -->
           <div class="hero-bottom">
 
             <p class="intro">
@@ -1079,10 +957,7 @@
         </div>
 
 
-        <!-- ===================================================
-             HEADSHOT
-             =================================================== -->
-
+        <!-- RIGHT SIDE: HEADSHOT -->
         <div class="hero-photo-col">
 
           <img
@@ -1100,13 +975,11 @@
   </header>
 
 
-
   <!-- =========================================================
        MAIN
        ========================================================= -->
 
   <main>
-
 
     <!-- =======================================================
          HIGHLIGHTS
@@ -1118,7 +991,6 @@
     >
 
       <div class="highlight-grid">
-
 
         <article class="highlight">
 
@@ -1150,11 +1022,9 @@
 
         </article>
 
-
       </div>
 
     </section>
-
 
 
     <!-- =======================================================
@@ -1163,9 +1033,8 @@
 
     <section class="body-grid content-shell">
 
-
       <!-- =====================================================
-           RESEARCH
+           RESEARCH COLUMN
            ===================================================== -->
 
       <div class="research-column">
@@ -1174,7 +1043,6 @@
 
 
         <div class="research-copy">
-
 
           <p>
             I am a fourth year engineering student at NC State
@@ -1207,7 +1075,6 @@
             and scuba diving.
           </p>
 
-
         </div>
 
 
@@ -1233,7 +1100,6 @@
 
         <div class="featured-copy">
 
-
           <p>
             While on exchange in Japan, I was fortunate to earn a
             stipend through my biomedical engineering program’s Abrams
@@ -1245,7 +1111,6 @@
 
 
           <p>
-
             <a
               href="https://dan.org/safety-prevention/diver-safety/divers-blog/student-scholar-dan-research-mentorship/"
               target="_blank"
@@ -1254,7 +1119,6 @@
               Please click <strong>here</strong> to read the DAN blog
               post and learn more about my work!
             </a>
-
           </p>
 
 
@@ -1271,22 +1135,19 @@
             especially after a simulated dive.
           </p>
 
-
         </div>
 
       </div>
 
 
-
       <!-- =====================================================
-           POSTERS
+           POSTERS COLUMN
            ===================================================== -->
 
       <aside
         class="posters-column"
         aria-labelledby="posters-heading"
       >
-
 
         <h2
           id="posters-heading"
@@ -1348,7 +1209,6 @@
 
         </figure>
 
-
       </aside>
 
     </section>
@@ -1356,13 +1216,11 @@
   </main>
 
 
-
   <!-- =========================================================
        FOOTER
        ========================================================= -->
 
   <footer class="footer">
-
 
     <p>
       Please feel free to reach out about future opportunities!
@@ -1374,11 +1232,7 @@
       aria-label="Social links"
     >
 
-
-      <!-- =====================================================
-           INSTAGRAM
-           ===================================================== -->
-
+      <!-- Instagram -->
       <a
         href="https://www.instagram.com/mck.artist/"
         aria-label="Instagram"
@@ -1390,20 +1244,15 @@
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
-
           <path
-            d="M12,4.622c2.403,0,2.688,0.009,3.637,0.052c.877,0.04,1.354,0.187,1.671,0.31c.42,0.163,0.72,0.358,1.035,0.673c.315,0.315,0.51,0.615,0.673,1.035c.123,0.317,0.27,0.794,0.31,1.671c.043,0.949,0.052,1.234,0.052,3.637s-.009,2.688-.052,3.637c-.04,.877-.187,1.354-.31,1.671c-.163,.42-.358,.72-.673,1.035c-.315,.315-.615,.51-1.035,.673c-.317,.123-.794,.27-1.671,.31c-.949,.043-1.233,.052-3.637,.052s-2.688-.009-3.637-.052c-.877-.04-1.354-.187-1.671-.31c-.42-.163-.72-.358-1.035-.673c-.315-.315-.51-.615-.673-1.035c-.123-.317-.27-.794-.31-1.671C4.631,14.688,4.622,14.403,4.622,12s.009-2.688,.052-3.637c.04-.877,.187-1.354,.31-1.671c.163-.42,.358-.72,.673-1.035c.315-.315,.615-.615,1.035-.673c.317-.123,.794-.27,1.671-.31C9.312,4.631,9.597,4.622,12,4.622 M12,3 C9.556,3,9.249,3.01,8.289,3.054C7.331,3.098,6.677,3.25,6.105,3.472C5.513,3.702,5.011,4.01,4.511,4.511c-.5,.5-.808,1.002-1.038,1.594C3.25,6.677,3.098,7.331,3.054,8.289C3.01,9.249,3,9.556,3,12c0,2.444,.01,2.751,.054,3.711c.044,.958,.196,1.612,.418,2.185c.23,.592,.538,1.094,1.038,1.594c.5,.5,1.002,.808,1.594,1.038c.572,.222,1.227,.375,2.185,.418C9.249,20.99,9.556,21,12,21s2.751-.01,3.711-.054c.958-.044,1.612-.196,2.185-.418c.592-.23,1.227-.375,2.185-.418c.592-.23,1.227-.538,1.594-1.038c.5-.5,.808-1.002,1.038-1.594c.222-.572,.375-1.227,.418-2.185C20.99,14.751,21,14.444,21,12s-.01-2.751-.054-3.711c-.044-.958-.196-1.612-.418-2.185c-.23-.592-.538-1.094-1.038-1.594c-.5-.5-1.002-1.094-1.594-1.038c-.572-.222-1.227-.375-2.185-.418C14.751,3.01,14.444,3,12,3L12,3z M12,7.378c-2.552,0-4.622,2.069-4.622,4.622S9.448,16.622,12,16.622s4.622-2.069,4.622-4.622S14.552,7.378,12,7.378z M12,15c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S13.657,15,12,15z M16.804,6.116c-.596,0-1.08,.484-1.08,1.08s.484,1.08,1.08,1.08c.596,0,1.08-.484,1.08-1.08S17.401,6.116,16.804,6.116z"
+            d="M12,4.622c2.403,0,2.688,0.009,3.637,0.052c.877,0.04,1.354,0.187,1.671,0.31c.42,0.163,0.72,0.358,1.035,0.673c.315,0.315,0.51,0.615,0.673,1.035c.123,0.317,0.27,0.794,0.31,1.671c.043,0.949,0.052,1.234,0.052,3.637s-.009,2.688-.052,3.637c-.04,.877-.187,1.354-.31,1.671c-.163,.42-.358,.72-.673,1.035c-.315,.315-.615,.51-1.035,.673c-.317,.123-.794,.27-1.671,.31c-.949,.043-1.233,.052-3.637,.052s-2.688-.009-3.637-.052c-.877-.04-1.354-.187-1.671-.31c-.42-.163-.72-.358-1.035-.673c-.315-.315-.51-.615-.673-1.035c-.123-.317-.27-.794-.31-1.671C4.631,14.688,4.622,14.403,4.622,12s.009-2.688,.052-3.637c.04-.877,.187-1.354,.31-1.671c.163-.42,.358-.72,.673-1.035c.315-.315,.615-.615,1.035-.673c.317-.123,.794-.27,1.671-.31C9.312,4.631,9.597,4.622,12,4.622 M12,3 C9.556,3,9.249,3.01,8.289,3.054C7.331,3.098,6.677,3.25,6.105,3.472C5.513,3.702,5.011,4.01,4.511,4.511c-.5,.5-.808,1.002-1.038,1.594C3.25,6.677,3.098,7.331,3.054,8.289C3.01,9.249,3,9.556,3,12c0,2.444,.01,2.751,.054,3.711c.044,.958,.196,1.612,.418,2.185c.23,.592,.538,1.094,1.038,1.594c.5,.5,1.002,.808,1.594,1.038c.572,.222,1.227,.375,2.185,.418C9.249,20.99,9.556,21,12,21s2.751-.01,3.711-.054c.958-.044,1.612-.196,2.185-.418c.592-.23,1.094-.538,1.594-1.038c.5-.5,.808-1.002,1.038-1.594c.222-.572,.375-1.227,.418-2.185C20.99,14.751,21,14.444,21,12s-.01-2.751-.054-3.711c-.044-.958-.196-1.612-.418-2.185c-.23-.592-.538-1.094-1.038-1.594c-.5-.5-1.002-1.094-1.594-1.038c-.572-.222-1.227-.375-2.185-.418C14.751,3.01,14.444,3,12,3L12,3z M12,7.378c-2.552,0-4.622,2.069-4.622,4.622S9.448,16.622,12,16.622s4.622-2.069,4.622-4.622S14.552,7.378,12,7.378z M12,15c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S13.657,15,12,15z M16.804,6.116c-.596,0-1.08,.484-1.08,1.08s.484,1.08,1.08,1.08c.596,0,1.08-.484,1.08-1.08S17.401,6.116,16.804,6.116z"
           />
-
         </svg>
 
       </a>
 
 
-      <!-- =====================================================
-           LINKEDIN
-           ===================================================== -->
-
+      <!-- LinkedIn -->
       <a
         href="https://www.linkedin.com/in/marina-kapitanov"
         aria-label="LinkedIn"
@@ -1415,20 +1264,15 @@
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
-
           <path
             d="M19.7,3H4.3C3.582,3,3,3.582,3,4.3v15.4C3,20.418,3.582,21,4.3,21h15.4c.718,0,1.3-.582,1.3-1.3V4.3C21,3.582,20.418,3,19.7,3z M8.339,18.338H5.667v-8.59h2.672V18.338z M7.004,8.574c-.857,0-1.549-.694-1.549-1.548c0-.855,.691-1.548,1.549-1.548c.854,0,1.547,.694,1.547,1.548C8.551,7.881,7.858,8.574,7.004,8.574z M18.339,18.338h-2.669v-4.177c0-.996-.017-2.278-1.387-2.278-1.389,0-1.601,1.086-1.601,2.206v4.249h-2.667v-8.59h2.559v1.174h.037c.356-.675,1.227-1.387,2.526-1.387c2.703,0,3.203,1.779,3.203,4.092V18.338z"
           />
-
         </svg>
 
       </a>
 
 
-      <!-- =====================================================
-           EMAIL
-           ===================================================== -->
-
+      <!-- Email -->
       <a
         href="mailto:mckapit2@email.unc.edu"
         aria-label="Email Marina Kapitanov"
@@ -1438,15 +1282,12 @@
           viewBox="0 0 24 24"
           aria-hidden="true"
         >
-
           <path
-            d="M19,5H5c-1.1,0-2,.9-2,2v10c0,1.1,.9,2,2,2h14c1.1,0,2-.9,2-2V7c0-1.1-.9-2-2-2zm.5,12c0,.3-.2,.5-.5.5H5c-.3,0-.5-.2-.5-.5V9.8l7.5,5.6,7.5-5.6V17zm0-9.1L12,13.6,4.5,7.9V7c0-.3.2-.5.5-.5h14c.3,0,.5,.2,.5,.5v.9z"
+            d="M19,5H5c-1.1,0-2,.9-2,2v10c0,1.1,.9,2,2,2h14c1.1,0,2-.9,2-2V7c0-1.1-.9-2-2-2zm.5,12c0,.3-.2.5-.5.5H5c-.3,0-.5-.2-.5-.5V9.8l7.5,5.6,7.5-5.6V17zm0-9.1L12,13.6,4.5,7.9V7c0-.3.2-.5.5-.5h14c.3,0,.5,.2,.5,.5v.9z"
           />
-
         </svg>
 
       </a>
-
 
     </div>
 
