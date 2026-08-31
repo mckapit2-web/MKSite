@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resume | Marina Kapitanov</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -161,11 +162,17 @@
     }
 
     .back {
-      display: inline-block;
-      margin-top: 26px;
+      display: block;
+      width: min(552px, 100%);
+      margin: 26px auto 0;
+      text-align: right;
       text-decoration: underline;
       text-underline-offset: 3px;
       color: var(--red);
+    }
+
+    .back:hover {
+      opacity: .8;
     }
 
     @media (max-width: 760px) {
@@ -182,6 +189,11 @@
 
       .brand-mark {
         margin-bottom: 34px;
+      }
+
+      .brand-mark img {
+        width: 80px;
+        height: 87px;
       }
 
       .header-links {
@@ -213,8 +225,12 @@
   <header class="hero">
     <div class="hero-inner">
 
-      <a class="brand-mark" href="index.html" aria-label="Home">
-        <img src="res/resume_back_button.png" alt="Back to portfolio" />
+      <!-- Custom back/home image -->
+      <a class="brand-mark" href="index.html" aria-label="Back to portfolio">
+        <img
+          src="res/resume_back_button.png"
+          alt="Back to portfolio"
+        />
       </a>
 
       <div class="header-links" aria-label="Contact links">
@@ -285,6 +301,9 @@
         Download
       </a>
     </div>
+
+    <!-- Original bottom back-to-portfolio link -->
+    <a class="back" href="index.html">← Back to portfolio</a>
 
   </main>
 
