@@ -34,16 +34,23 @@
       line-height: 1.2;
     }
 
-    img { max-width: 100%; height: auto; }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
 
     a {
       color: var(--red);
       text-decoration: none;
     }
 
-    a:hover { text-decoration: underline; }
+    a:hover {
+      text-decoration: underline;
+    }
 
-    p, h1, h2, h3, figure { margin: 0; }
+    p, h1, h2, h3, figure {
+      margin: 0;
+    }
 
     /* =========================
        HERO
@@ -105,7 +112,9 @@
       color: var(--base);
     }
 
-    .site-title a { color: inherit; }
+    .site-title a {
+      color: inherit;
+    }
 
     .top-social {
       display: flex;
@@ -142,7 +151,9 @@
       line-height: 1;
     }
 
-    .hero-title a { color: inherit; }
+    .hero-title a {
+      color: inherit;
+    }
 
     .hero-bottom {
       margin-top: 2rem;
@@ -179,18 +190,27 @@
     }
 
     .hero-nav a,
-    .hero-nav .slash { color: var(--ink); }
+    .hero-nav .slash {
+      color: var(--ink);
+    }
 
     .hero-photo-col {
       padding-top: 4rem;
     }
 
+    /*
+      Keep the original headshot positioning and outer dimensions.
+      The local image is contained inside the same 358px-wide frame.
+    */
     .hero-photo {
       display: block;
       width: 358px;
+      height: auto;
       max-width: 100%;
       border: 8px solid var(--base);
       margin: 0;
+      object-fit: cover;
+      object-position: center;
     }
 
     /* =========================
@@ -220,9 +240,17 @@
       padding: 2rem 1rem 1.5rem;
     }
 
-    .highlight:first-child { border-left: 0; }
-    .highlight:nth-child(2) { border-left: 1px solid var(--red); }
-    .highlight:last-child { border-right: 1px solid var(--red); }
+    .highlight:first-child {
+      border-left: 0;
+    }
+
+    .highlight:nth-child(2) {
+      border-left: 1px solid var(--red);
+    }
+
+    .highlight:last-child {
+      border-right: 1px solid var(--red);
+    }
 
     .highlight h2 {
       width: 100%;
@@ -238,7 +266,7 @@
     }
 
     /* =========================
-       MAIN BODY
+       MAIN BODY — 2/3 text, 1/3 posters
        ========================= */
     .body-grid {
       display: grid;
@@ -258,7 +286,9 @@
       border-left: 1px solid var(--red);
     }
 
-    .body-spacer { height: 28px; }
+    .body-spacer {
+      height: 28px;
+    }
 
     .research-copy {
       font-size: clamp(0.984rem, 0.984rem + ((1vw - 0.2rem) * 0.938), 1.5rem);
@@ -266,8 +296,13 @@
       color: var(--red);
     }
 
-    .research-copy p { margin-bottom: 2rem; }
-    .research-copy p:last-child { margin-bottom: 0; }
+    .research-copy p {
+      margin-bottom: 2rem;
+    }
+
+    .research-copy p:last-child {
+      margin-bottom: 0;
+    }
 
     .separator {
       margin: 1.75rem 0 0;
@@ -305,9 +340,13 @@
       margin-bottom: 1.8rem;
     }
 
-    .featured-copy p:last-child { margin-bottom: 0; }
+    .featured-copy p:last-child {
+      margin-bottom: 0;
+    }
 
-    .featured-copy a { color: var(--red); }
+    .featured-copy a {
+      color: var(--red);
+    }
 
     .posters-title {
       color: var(--red);
@@ -370,8 +409,13 @@
       fill: currentColor;
     }
 
+    /* =========================
+       RESPONSIVE
+       ========================= */
     @media (max-width: 900px) {
-      :root { --pad: 1.5rem; }
+      :root {
+        --pad: 1.5rem;
+      }
 
       .hero-columns {
         grid-template-columns: 1fr;
@@ -405,7 +449,9 @@
     }
 
     @media (max-width: 700px) {
-      :root { --pad: 1rem; }
+      :root {
+        --pad: 1rem;
+      }
 
       .hero {
         min-height: 0;
@@ -442,7 +488,9 @@
         border-bottom: 1px solid var(--red);
       }
 
-      .highlight:last-child { border-bottom: 0; }
+      .highlight:last-child {
+        border-bottom: 0;
+      }
     }
   </style>
 
@@ -456,12 +504,14 @@
 
 ```
     <div class="hero-left">
+
       <div class="top-row">
+
         <div class="identity">
           <a href="index.html" aria-label="Marina Kapitanov home">
             <img
               class="identity-logo"
-              src="res/img_0429.png"
+              src="https://marinakapitanov.wordpress.com/wp-content/uploads/2024/06/img_0429.png?w=174"
               alt=""
             />
           </a>
@@ -472,39 +522,67 @@
         </div>
 
         <div class="top-social" aria-label="Contact links">
-          <a class="social-link" href="mailto:mckapit2@email.unc.edu" aria-label="Email Marina Kapitanov">
+          <a
+            class="social-link"
+            href="mailto:mckapit2@email.unc.edu"
+            aria-label="Email Marina Kapitanov"
+          >
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M19,5H5c-1.1,0-2,.9-2,2v10c0,1.1.9,2,2,2h14c1.1,0,2-.9,2-2V7c0-1.1-.9-2-2-2zm.5,12c0,.3-.2.5-.5.5H5c-.3,0-.5-.2-.5-.5V9.8l7.5,5.6,7.5-5.6V17zm0-9.1L12,13.6,4.5,7.9V7c0-.3.2-.5.5-.5h14c.3,0,.5.2.5.5v.9z"/>
             </svg>
           </a>
         </div>
+
       </div>
 
       <h1 class="hero-title">Marina Kapitanov</h1>
 
       <div class="hero-bottom">
+
         <p class="intro">
           Hello! I’m Marina, a motivated, creative biomedical engineering undergraduate student seeking research experience in diving medicine. Scroll to learn more!
         </p>
 
         <div class="nav-wrap">
           <nav class="hero-nav" aria-label="Header navigation">
+
             <a href="resume.html">Resume</a>
+
             <span class="slash">/</span>
-            <a href="https://www.linkedin.com/in/marina-kapitanov" target="_blank" rel="noopener noreferrer">Linkedin</a>
+
+            <a
+              href="https://www.linkedin.com/in/marina-kapitanov"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Linkedin
+            </a>
+
             <span class="slash">/</span>
-            <a href="https://www.instagram.com/mck.artist/" target="_blank" rel="noopener noreferrer">Instagram</a>
+
+            <a
+              href="https://www.instagram.com/mck.artist/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>
+
           </nav>
         </div>
+
       </div>
+
     </div>
 
     <div class="hero-photo-col">
+
       <img
         class="hero-photo"
         src="res/backshots.png"
         alt="Profile Picture"
       />
+
     </div>
 
   </div>
@@ -517,21 +595,29 @@
 
 ```
 <section class="highlights content-shell" aria-label="Highlights">
+
   <div class="highlight-grid">
 
     <article class="highlight">
-      <h2>Participating in a year-long academic exchange at Nagoya University, Japan</h2>
+      <h2>
+        Participating in a year-long academic exchange at Nagoya University, Japan
+      </h2>
     </article>
 
     <article class="highlight">
-      <h2>Studying at the Joint Department of Biomedical Engineering at NC State &amp; University of North Carolina Chapel Hill</h2>
+      <h2>
+        Studying at the Joint Department of Biomedical Engineering at NC State &amp; University of North Carolina Chapel Hill
+      </h2>
     </article>
 
     <article class="highlight">
-      <h2>Researching with Divers Alert Network in Durham, North Carolina</h2>
+      <h2>
+        Researching with Divers Alert Network in Durham, North Carolina
+      </h2>
     </article>
 
   </div>
+
 </section>
 
 <section class="body-grid content-shell">
@@ -558,14 +644,18 @@
 
     <hr class="separator" />
 
-    <h2 class="recent-heading">Recently Featured!</h2>
+    <h2 class="recent-heading">
+      Recently Featured!
+    </h2>
 
     <div class="recent-image-wrap">
+
       <img
         class="dive-photo"
         src="res/scuba_dive.png"
         alt="Marina Kapitanov diving underwater"
       />
+
     </div>
 
     <div class="featured-copy">
@@ -592,13 +682,17 @@
 
   </div>
 
-  <aside class="posters-column" aria-labelledby="posters-heading">
+  <aside
+    class="posters-column"
+    aria-labelledby="posters-heading"
+  >
 
     <h2 id="posters-heading" class="posters-title">
       Posters and Presentations:
     </h2>
 
     <figure class="poster-card">
+
       <img
         src="res/stress_and_inflammation.png"
         alt="Stress and Inflammation Salivary Analytes poster presentation"
@@ -607,9 +701,11 @@
       <figcaption class="poster-caption">
         Stress and Inflammation Salivary Analytes Collected from Standardized Dives, Undersea and Hyperbaric Medicine Annual Scientific Meeting, San Diego, CA 2024
       </figcaption>
+
     </figure>
 
     <figure class="poster-card">
+
       <img
         src="res/microtissue_contraction.png"
         alt="Microtissue Contraction poster presentation"
@@ -618,9 +714,11 @@
       <figcaption class="poster-caption">
         Microtissue Contraction of Human Mesenchymal Stem Cells in Extracellular Matrix Hydrogels Derived from Respiratory Tissues, NC State Undergraduate Research and Creativity Symposium 2023, Raleigh, NC.
       </figcaption>
+
     </figure>
 
     <figure class="poster-card">
+
       <img
         src="res/simplifying_finite_element.png"
         alt="Simplifying Finite Element Model poster presentation"
@@ -629,6 +727,7 @@
       <figcaption class="poster-caption">
         Simplifying Finite Element Model of Trabecular Bone in a Rat Model of Brachial Plexus Birth Injury, NC State Summer Undergraduate Research and Creativity Symposium 2021, Raleigh, NC.
       </figcaption>
+
     </figure>
 
   </aside>
@@ -641,7 +740,9 @@
   <footer class="footer">
 
 ```
-<p>Please feel free to reach out about future opportunities!</p>
+<p>
+  Please feel free to reach out about future opportunities!
+</p>
 
 <div class="footer-socials" aria-label="Social links">
 
@@ -652,7 +753,7 @@
     rel="noopener noreferrer"
   >
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12,4.622c2.403,0,2.688,0.009,3.637,0.052c0.877,0.04,1.354,0.187,1.671,0.31c0.42,0.163,0.72,0.358,1.035,0.673c0.315,0.315,0.51,0.615,0.673,1.035c0.123,0.317,0.27,0.794,0.31,1.671c0.043,0.949,0.052,1.234,0.052,3.637s-.009,2.688-.052,3.637c-.04,.877-.187,1.354-.31,1.671c-.163,.42-.358,.72-.673,1.035c-.315,.315-.615,.51-1.035,.673c-.317,.123-.794,.27-1.671,.31c-.949,.043-1.233,.052-3.637,.052s-2.688-.009-3.637-.052c-.877-.04-1.354-.187-1.671-.31c-.42-.163-.72-.358-1.035-.673c-.315-.315-.51-.615-.673-1.035c-.123-.317-.27-.794-.31-1.671C4.631,14.688,4.622,14.403,4.622,12s.009-2.688,.052-3.637c.04-.877,.187-1.354,.31-1.671c.163-.42,.358-.72,.673-1.035c.315-.315,.615-.51,1.035-.673c.317-.123,.794-.27,1.671-.31C9.312,4.631,9.597,4.622,12,4.622 M12,3 C9.556,3,9.249,3.01,8.289,3.054C7.331,3.098,6.677,3.25,6.105,3.472C5.513,3.702,5.011,4.01,4.511,4.511 c-.5,.5-.808,1.002-1.038,1.594C3.25,6.677,3.098,7.331,3.054,8.289C3.01,9.249,3,9.556,3,12c0,2.444,.01,2.751,.054,3.711 c.044,.958,.196,1.612,.418,2.185c.23,.592,.538,1.094,1.038,1.594c.5,.5,1.002,.808,1.594,1.038 c.572,.222,1.227,.375,2.185,.418C9.249,20.99,9.556,21,12,21s2.751-.01,3.711-.054c.958-.044,1.612-.196,2.185-.418 c.592-.23,1.094-.375,1.594-1.038c.5-.5,.808-1.002,1.038-1.594c.222-.572,.375-1.227,.418-2.185 C20.99,14.751,21,14.444,21,12s-.01-2.751-.054-3.711c-.044-.958-.196-1.612-.418-2.185c-.23-.592-.538-1.094-1.038-1.594 c-.5-.5-.808-1.002-1.038-1.594c-.222-.572-.375-1.227-.418-2.185C14.751,3.01,14.444,3,12,3L12,3z M12,7.378 c-2.552,0-4.622,2.069-4.622,4.622S9.448,16.622,12,16.622s4.622-2.069,4.622-4.622S14.552,7.378,12,7.378z M12,15 c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S13.657,15,12,15z M16.804,6.116c-.596,0-1.08,.484-1.08,1.08s.484,1.08,1.08,1.08c.596,0,1.08-.484,1.08-1.08S17.401,6.116,16.804,6.116z"/>
+      <path d="M12,4.622c2.403,0,2.688,0.009,3.637,0.052c0.877,0.04,1.354,0.187,1.671,0.31c0.42,0.163,0.72,0.358,1.035,0.673c0.315,0.315,0.51,0.615,0.673,1.035c0.123,0.317,0.27,0.794,0.31,1.671c0.043,0.949,0.052,1.234,0.052,3.637s-.009,2.688-.052,3.637c-.04,.877-.187,1.354-.31,1.671c-.163,.42-.358,.72-.673,1.035c-.315,.315-.615,.51-1.035,.673c-.317,.123-.794,.27-1.671,.31c-.949,.043-1.233,.052-3.637,.052s-2.688-.009-3.637-.052c-.877-.04-1.354-.187-1.671-.31c-.42-.163-.72-.358-.1.035c-.315-.315-.51-.615-.673-1.035c-.123-.317-.27-.794-.31-1.671C4.631,14.688,4.622,14.403,4.622,12s.009-2.688,.052-3.637c.04-.877,.187-1.354,.31-1.671c.163-.42,.358-.72,.673-1.035c.315-.315,.615-.51,1.035-.673c.317-.123,.794-.27,1.671-.31C9.312,4.631,9.597,4.622,12,4.622 M12,3 C9.556,3,9.249,3.01,8.289,3.054C7.331,3.098,6.677,3.25,6.105,3.472C5.513,3.702,5.011,4.01,4.511,4.511 c-.5,.5-.808,1.002-1.038,1.594C3.25,6.677,3.098,7.331,3.054,8.289C3.01,9.249,3,9.556,3,12c0,2.444,.01,2.751,.054,3.711 c.044,.958,.196,1.612,.418,2.185c.23,.592,.538,1.094,1.038,1.594c.5,.5,1.002,.808,1.594,1.038 c.572,.222,1.227,.375,2.185,.418C9.249,20.99,9.556,21,12,21s2.751-.01,3.711-.054c.958-.044,1.612-.196,2.185-.418 c.592-.23,1.227-.375,2.185-.418c.592-.23,.1.038-.5,.038c-.5,.5-.808,1.002-1.038,1.594c-.222,.572-.375,1.227-.418,2.185 C20.99,14.751,21,14.444,21,12s-.01-2.751-.054-3.711c-.044-.958-.196-1.612-.418-2.185c-.23-.592-.538-1.094-1.038-1.594 c-.5-.5-.808-1.002-1.038-1.594c-.222-.572-.375-1.227-.418-2.185C14.751,3.01,14.444,3,12,3L12,3z M12,7.378 c-2.552,0-4.622,2.069-4.622,4.622S9.448,16.622,12,16.622s4.622-2.069,4.622-4.622S14.552,7.378,12,7.378z M12,15 c-1.657,0-3-1.343-3-3s1.343-3,3-3s3,1.343,3,3S13.657,15,12,15z M16.804,6.116c-.596,0-1.08,.484-1.08,1.08s.484,1.08,1.08,1.08c.596,0,1.08-.484,1.08-1.08S17.401,6.116,16.804,6.116z"/>
     </svg>
   </a>
 
